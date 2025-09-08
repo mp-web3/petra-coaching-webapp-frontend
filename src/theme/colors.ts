@@ -1,0 +1,58 @@
+// src/theme/colors.ts
+export const colors = {
+    // Special Colors
+    white: { value: "#ffffff" },
+    black: { value: "#000000" },
+    transparent: { value: "transparent" },
+
+    // Flame Pea - Your primary brand color
+    flame: {
+        100: { value: '#FDEDEB' },
+        200: { value: '#F9D1CC' },
+        300: { value: '#F3A49A' },
+        400: { value: '#EE7768' },
+        500: { value: '#E84935' },
+        600: { value: '#AE3728' },
+        700: { value: '#74251B' },
+        800: { value: '#3A120D' }
+    },
+
+    // Spring Wood - Your neutral/background color
+    springWood: {
+        100: { value: '#F5F5F4' },
+        200: { value: '#F6F6F5' },
+        300: { value: '#F6F7F4' },
+        400: { value: '#F7F8F3' },
+        500: { value: '#F8F9F3' },
+        600: { value: '#BABBB6' },
+        700: { value: '#7C7D7A' },
+        800: { value: '#3E3E3D' }
+    },
+
+    // Casal - Your secondary brand color
+    casal: {
+        100: { value: '#E0E5E7' },
+        200: { value: '#C2CFD3' },
+        300: { value: '#8FA8B0' },
+        400: { value: '#5C828E' },
+        500: { value: '#295C6C' },
+        600: { value: '#1F4551' },
+        700: { value: '#152E36' },
+        800: { value: '#0A171B' }
+    },
+
+    // Additional semantic colors for states
+    green: {
+        100: { value: '#dcfce7' },
+        500: { value: '#22c55e' },
+        600: { value: '#16a34a' },
+        800: { value: '#166534' }
+    },
+
+    yellow: {
+        100: { value: '#fef3c7' },
+        500: { value: '#f59e0b' },
+        600: { value: '#d97706' },
+        800: { value: '#92400e' }
+    }
+}

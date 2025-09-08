@@ -1,11 +1,11 @@
-import { Button } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 
 const Home = () => {
     return (
-        <div>
+        <Box>
             <h1>Coaching Online Personalizzato</h1>
-            <Button>scopri i piani</Button>
-        </div>
+            <Button bg='surface.action'>scopri i piani</Button>
+        </Box>
     )
 }
 
