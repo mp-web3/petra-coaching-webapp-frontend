@@ -39,7 +39,6 @@ const Hero = ({
                 left={0}
                 right={0}
                 bottom={0}
-                // bg='blackAlpha.600'
                 bg='hoverlay.default'
                 zIndex={2}
             />
@@ -59,7 +58,7 @@ const Hero = ({
                 <VStack 
                     align='flex-start' 
                     gap={[6, 8, 10]}
-                    paddingRight={[6, 6, 8]}
+                    pr={[6, 6, 8]}
                     maxW='2xl'
                     border='1px solid white'
                 >
