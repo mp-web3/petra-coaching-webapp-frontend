@@ -3,7 +3,9 @@ import { Box, Button } from "@chakra-ui/react";
 const Home = () => {
     return (
         <Box>
-            <h1>Coaching Online Personalizzato</h1>
+            <Box textStyle='title'>
+                Coaching Online Personalizzato
+            </Box>
             <Button bg='surface.action'>scopri i piani</Button>
         </Box>
     )

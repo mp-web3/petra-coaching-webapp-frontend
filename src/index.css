@@ -1,4 +1,11 @@
 /* Minimal CSS - everything else is handled by Chakra UI theme */
+@font-face {
+  font-family: 'Heliuk Pliable';
+  src: url('/fonts/Heliuk-Pliable-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
 }

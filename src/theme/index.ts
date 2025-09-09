@@ -2,13 +2,19 @@
 import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react"
 import { colors } from './colors'
 import { semanticTokens } from './colorsSemantic'
+import { typography } from './typography'
+import { textStyles } from './text-styles'
 
 const config = defineConfig({
     theme: {
         tokens: {
-            colors
+            colors,
+            ...typography
         },
-        semanticTokens
+        semanticTokens: {
+            ...semanticTokens,
+        },
+        textStyles,
     }
 })
 
