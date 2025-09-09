@@ -9,16 +9,14 @@ const MainButton = ({ text, link }: MainButtonProps) => {
     return (
         <Link href={link}>
             <Button 
-                bg="surface.action"
-                color="white"
-                textTransform="uppercase"
+                bg='surface.action'
+                color='text.onSurfaceAction'
+                textStyle='button'
                 px={8}
                 py={4}
-                borderRadius="md"
-                fontWeight="semibold"
-                fontSize="lg"
+                borderRadius='md'
                 _hover={{
-                    bg: "interactive.primaryHover"
+                    bg: 'interactive.primaryHover'
                 }}
             >
                 {text}

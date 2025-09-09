@@ -2,25 +2,37 @@
 export const semanticTokens = {
     colors: {
         // Brand Colors - Semantic aliases for your brand colors
-        primary: { value: '{colors.flame.500}' },
-        primaryLight: { value: '{colors.flame.100}' },
-        primaryDark: { value: '{colors.flame.800}' },
-
-        secondary: { value: '{colors.casal.500}' },
-        secondaryLight: { value: '{colors.casal.100}' },
-        secondaryDark: { value: '{colors.casal.800}' },
+        primary: {
+            default: { value: '{colors.flame.500}' },
+            light: { value: '{colors.flame.100}' },
+            dark: { value: '{colors.flame.800}' },
+        },
+        secondary: {
+            default: { value: '{colors.casal.500}' },
+            light: { value: '{colors.casal.100}' },
+            dark: { value: '{colors.casal.800}' },
+        },
+        neutral: {
+            default: {value: '{colors.springWood.500}'},
+            light: { value: '{colors.springWood.100}' },
+            dark: { value: '{colors.springWood.800}' },
+        },
 
         // Surface Colors - Different background contexts
         surface: {
-            action: { value: '{colors.primary}' },
+            action: { value: '{colors.primary.default}' },
             page: { value: '{colors.springWood.100}' },
-            card: { value: '{colors.white}' },
+            card: {
+                red: { value: '{colors.primary.default}' },
+                dark: { value: '{colors.secondary.dark}'}
+            },
             modal: { value: '{colors.white}' },
             elevated: { value: '{colors.springWood.200}' },
         },
 
         // Text Colors - Different text contexts
         text: {
+            onSurfaceAction: {value: '{colors.neutral.default}'},
             primary: { value: '{colors.casal.800}' },
             secondary: { value: '{colors.casal.600}' },
             muted: { value: '{colors.casal.500}' },
