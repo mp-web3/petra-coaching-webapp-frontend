@@ -12,10 +12,15 @@ export const semanticTokens = {
             light: { value: '{colors.casal.100}' },
             dark: { value: '{colors.casal.800}' },
         },
-        neutral: {
+        neutralLight: {
             default: {value: '{colors.springWood.500}'},
             light: { value: '{colors.springWood.100}' },
             dark: { value: '{colors.springWood.800}' },
+        },
+        neutralDark: {
+            default: {value: '{colors.codGray.500}'},
+            light: { value: '{colors.codGray.100}' },
+            dark: { value: '{colors.codGray.800}' },
         },
 
         // Surface Colors - Different background contexts
@@ -32,13 +37,20 @@ export const semanticTokens = {
 
         // Text Colors - Different text contexts
         text: {
-            onSurfaceAction: {value: '{colors.neutral.default}'},
+            onSurfaceAction: {value: '{colors.neutralLight.default}'},
+            onPrimary: {value: '{colors.neutralLight.default}'},
+            onDark: {value: '{colors.neutralLight.default}'},
+            onDarkHoverlay: {value: '{colors.neutralLight.default}'},
             primary: { value: '{colors.casal.800}' },
             secondary: { value: '{colors.casal.600}' },
             muted: { value: '{colors.casal.500}' },
             inverse: { value: '{colors.white}' },
             link: { value: '{colors.primary}' },
             linkHover: { value: '{colors.flame.600}' },
+        },
+
+        hoverlay: {
+            default: {value: '{colors.blackAlpha.500}'}
         },
 
         // Border Colors - Different border contexts

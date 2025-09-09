@@ -40,19 +40,15 @@ export const colors = {
         700: { value: '#152E36' },
         800: { value: '#0A171B' }
     },
-
-    // Additional semantic colors for states
-    green: {
-        100: { value: '#dcfce7' },
-        500: { value: '#22c55e' },
-        600: { value: '#16a34a' },
-        800: { value: '#166534' }
-    },
-
-    yellow: {
-        100: { value: '#fef3c7' },
-        500: { value: '#f59e0b' },
-        600: { value: '#d97706' },
-        800: { value: '#92400e' }
+    
+    codGray: {
+        100: { value: '#DFDFDF' },
+        200: { value: '#BFBFBF' },
+        300: { value: '#888888' },
+        400: { value: '#525252' },
+        500: { value: '#1C1C1C' },
+        600: { value: '#151515' },
+        700: { value: '#0E0E0E' },
+        800: { value: '#070707' }
     }
 }

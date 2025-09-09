@@ -5,7 +5,7 @@ export const textStyles = {
         description: 'This is used for the title of the page',
         value: {
             fontFamily: '{fonts.title}',
-            fontSize: ['5xl', '5xl', '5xl'], // Mobile, tablet, desktop, large desktop
+            fontSize: ['5xl', '5xl', '5xl'],
             lineHeight: 'shorter',
             fontWeight: 'normal',
             textTransform: 'uppercase'
@@ -16,7 +16,7 @@ export const textStyles = {
         description: '',
         value: {
             fontFamily: '{fonts.h3}',
-            fontSize: ['5xl', '5xl', '5xl'], // Mobile, tablet, desktop, large desktop
+            fontSize: ['5xl', '5xl', '5xl'],
             lineHeight: 'shorter',
             fontWeight: 'normal',
             textTransform: 'uppercase'
@@ -27,10 +27,20 @@ export const textStyles = {
         description: '',
         value: {
             fontFamily: '{fonts.button}',
-            fontSize: ['md', 'md', 'md'], // Mobile, tablet, desktop, large desktop
+            fontSize: ['md', 'md', 'md'],
             lineHeight: 'shorter',
             fontWeight: 'medium',
             textTransform: 'uppercase',
+        }       
+    },
+
+    objectionReducing: {
+        description: '',
+        value: {
+            fontFamily: '{fonts.body}',
+            fontSize: ['sm', 'sm', 'sm'],
+            lineHeight: 'shorter',
+            fontWeight: 'normal',
         }       
     }
 

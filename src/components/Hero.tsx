@@ -26,9 +26,9 @@ const Hero = ({
                 right={0}
                 bottom={0}
                 backgroundImage={`url('${backgroundImage}')`}
-                backgroundSize="cover"
-                backgroundPosition="center"
-                backgroundRepeat="no-repeat"
+                backgroundSize='cover'
+                backgroundPosition='center'
+                backgroundRepeat='no-repeat'
                 zIndex={1}
             />
             
@@ -39,7 +39,8 @@ const Hero = ({
                 left={0}
                 right={0}
                 bottom={0}
-                bg="blackAlpha.600"
+                // bg='blackAlpha.600'
+                bg='hoverlay.default'
                 zIndex={2}
             />
             
@@ -47,23 +48,26 @@ const Hero = ({
             <Container 
                 position={'relative'} 
                 zIndex={3}
-                maxW="container.xl"
+                maxW='container.xl'
                 px={[4, 6, 8]}
                 py={[16, 20, 24]}
-                h="100vh"
-                display="flex"
-                alignItems="center"
+                h='100vh'
+                display='flex'
+                alignItems='center'
+                border='1px solid green'
             >
                 <VStack 
-                    align="flex-start" 
+                    align='flex-start' 
                     gap={[6, 8, 10]}
-                    maxW="2xl"
+                    paddingRight={[6, 6, 8]}
+                    maxW='2xl'
+                    border='1px solid white'
                 >
                     {/* Main Heading */}
                     <Heading 
-                        as="h1" 
-                        textStyle="title"
-                        color="white"
+                        as='h1' 
+                        textStyle='title'
+                        color='text.onDarkHoverlay'
                     >
                         {title}
                     </Heading>
@@ -75,11 +79,9 @@ const Hero = ({
                     />
                     
                     {/* objectionReducingInfo Text */}
-                    <Text 
-                        color="white"
-                        fontSize={["md", "lg", "xl"]}
-                        lineHeight="relaxed"
-                        maxW="lg"
+                    <Text
+                        textStyle='objectionReducing' 
+                        color='text.onDarkHoverlay'
                     >
                         {objectionReducingInfoText}
                     </Text>
