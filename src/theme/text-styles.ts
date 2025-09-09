@@ -4,13 +4,10 @@ export const textStyles = {
     title: {
         description: 'This is used for the title of the page',
         value: {
-            // fontFamily: '{fonts.heading.title}',
             fontFamily: '{fonts.title}',
-            fontSize: '{fontSize.title}',
-            lineHeight: "{lineHeight.title}",
-            letterSpacing: "0",
-            textDecoration: "None",
-            textTransform: "None",
+            fontSize: ['5xl', '5xl', '5xl'], // Mobile, tablet, desktop, large desktop
+            lineHeight: ['title', 'title', 'title'],
+            fontWeight: 'regular'
         }
     }
 
