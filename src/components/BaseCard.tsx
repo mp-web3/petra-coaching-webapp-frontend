@@ -18,14 +18,16 @@ const BaseCard = ({ heading, description, link, backgroundColor, headingColor, d
             aspectRatio={1/1}
             bg={backgroundColor}
             px={[4, 6, 8]}
-            border='1px solid blue'
+            w='100%'
+            border='1px solid yellow'
+            borderRadius='4px'
+            maxW={['375px', '600px']}
             >
                 <VStack
-                    maxW='350px'
                     align='center'
                     justify='center'
-                    gap={'22px'} 
-                    borderRadius={2}
+                    gap={6} 
+                    
                 >
                     <Heading
                         as='h3'

@@ -50,5 +50,27 @@ export const colors = {
         600: { value: '#151515' },
         700: { value: '#0E0E0E' },
         800: { value: '#070707' }
-    }
+    },
+
+    cashmere: {
+        100: { value: '#F3EFEC' },
+        200: { value: '#F2E7E0' },
+        300: { value: '#EDD8CB' },
+        400: { value: '#E9CAB6' },
+        500: { value: '#E6BCA1' },
+        600: { value: '#AC8D79' },
+        700: { value: '#735E51' },
+        800: { value: '#3A2F28' }
+    },
+
+    copperCanyon: {
+        100: { value: '#E8E3DE' },
+        200: { value: '#D7C8BD' },
+        300: { value: '#B89B83' },
+        400: { value: '#9A6E4B' },
+        500: { value: '#7C4112' },
+        600: { value: '#5D310E' },
+        700: { value: '#3E2109' },
+        800: { value: '#1F1005' }
+    },
 }

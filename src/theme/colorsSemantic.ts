@@ -13,12 +13,12 @@ export const semanticTokens = {
             dark: { value: '{colors.casal.800}' },
         },
         neutralLight: {
-            default: {value: '{colors.springWood.500}'},
+            default: { value: '{colors.springWood.500}' },
             light: { value: '{colors.springWood.100}' },
             dark: { value: '{colors.springWood.800}' },
         },
         neutralDark: {
-            default: {value: '{colors.codGray.500}'},
+            default: { value: '{colors.codGray.500}' },
             light: { value: '{colors.codGray.100}' },
             dark: { value: '{colors.codGray.800}' },
         },
@@ -29,7 +29,8 @@ export const semanticTokens = {
             page: { value: '{colors.springWood.100}' },
             card: {
                 red: { value: '{colors.primary.default}' },
-                dark: { value: '{colors.secondary.dark}'}
+                dark: { value: '{colors.secondary.dark}' },
+                light: { value: '{colors.copperCanyon.400}' },
             },
             modal: { value: '{colors.white}' },
             elevated: { value: '{colors.springWood.200}' },
@@ -37,10 +38,10 @@ export const semanticTokens = {
 
         // Text Colors - Different text contexts
         text: {
-            onSurfaceAction: {value: '{colors.neutralLight.default}'},
-            onPrimary: {value: '{colors.neutralLight.default}'},
-            onDark: {value: '{colors.neutralLight.default}'},
-            onDarkHoverlay: {value: '{colors.neutralLight.default}'},
+            onSurfaceAction: { value: '{colors.neutralLight.default}' },
+            onPrimary: { value: '{colors.neutralLight.default}' },
+            onDark: { value: '{colors.neutralLight.default}' },
+            onDefaultHoverlay: { value: '{colors.neutralLight.default}' },
             primary: { value: '{colors.casal.800}' },
             secondary: { value: '{colors.casal.600}' },
             muted: { value: '{colors.casal.500}' },
@@ -50,7 +51,7 @@ export const semanticTokens = {
         },
 
         hoverlay: {
-            default: {value: '{colors.blackAlpha.500}'}
+            default: { value: '{colors.blackAlpha.500}' }
         },
 
         // Border Colors - Different border contexts

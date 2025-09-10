@@ -12,6 +12,17 @@ export const textStyles = {
         }
     },
 
+    h2: {
+        description: '',
+        value: {
+            fontFamily: '{fonts.h2}',
+            fontSize: ['7xl', '7xl', '9xl'],
+            lineHeight: 'shorter',
+            fontWeight: 'normal',
+            textTransform: 'uppercase'
+        }
+    },
+
     h3: {
         description: '',
         value: {

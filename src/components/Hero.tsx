@@ -66,7 +66,7 @@ const Hero = ({
                     <Heading 
                         as='h1' 
                         textStyle='title'
-                        color='text.onDarkHoverlay'
+                        color='text.onDefaultHoverlay'
                     >
                         {title}
                     </Heading>
@@ -80,7 +80,7 @@ const Hero = ({
                     {/* objectionReducingInfo Text */}
                     <Text
                         textStyle='objectionReducing' 
-                        color='text.onDarkHoverlay'
+                        color='text.onDefaultHoverlay'
                     >
                         {objectionReducingInfoText}
                     </Text>
