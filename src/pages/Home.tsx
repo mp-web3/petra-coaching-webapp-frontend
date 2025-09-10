@@ -1,8 +1,9 @@
 import Hero from '@/components/Hero'
 import BaseCard from '@/components/BaseCard'
-import { Box, Container, Heading, SimpleGrid, Text, VStack } from '@chakra-ui/react';
+import { Box, Container, Heading, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react';
 import heroBackgroundHome from '@/assets/images/hero-background-home.png'
 import weightsBackground from '@/assets/images/weights-background.jpg'
+import fitnessStrengthPerformanceNatalieCollars from '@/assets/images/fitness-strength-performance-natalie-collars-light-background.jpg'
 
 const Home = () => {
     return (
@@ -94,7 +95,7 @@ const Home = () => {
 
                 <SimpleGrid
                     columns={{ base: 1, md: 3 }} 
-                    gap={[4, 6, 8]}
+                    gap={[11, 6, 8]}
                     mx="auto"
                     alignItems="stretch"
                     justifyItems="flex-start"
@@ -106,11 +107,28 @@ const Home = () => {
                     textStyle='h2'
                     color='text.onDefaultHoverlay'
                     whiteSpace="pre-line"
+                    lineHeight={1}
                     >
                         {`fitness
                         strength
                         performance`}
                     </Heading>
+
+                    <Text
+                        textStyle='md'
+                        color='text.onDefaultHoverlay'
+                    >
+                        Copy che spiega l’approccio all’allenamento, i risultati visti e come 
+                        l’allenamento spinga chi si dedica a trasformare non solo 
+                        le sue performance sportive e il fisico in meglio, 
+                        ma la sua vita intera
+                    </Text>
+
+                    <Image
+                        src={fitnessStrengthPerformanceNatalieCollars}
+                        aspectRatio={['1/1']}
+                        alt="Fitness strength performance"
+                    />
 
                 </SimpleGrid>
 
