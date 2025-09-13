@@ -31,6 +31,7 @@ const Home = () => {
 
             <SimpleGrid 
                 columns={{ base: 1, md: 3 }} 
+                py={[16, 20, 24]}
                 gap={[4, 6, 8]}
                 mx='auto'
                 alignItems='stretch'
