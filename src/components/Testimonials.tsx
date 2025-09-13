@@ -1,4 +1,4 @@
-import { Box, Container, SimpleGrid, VStack, HStack, Text, Heading, Image, Button, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Container, SimpleGrid, VStack, HStack, Text, Image, Button, useBreakpointValue } from '@chakra-ui/react'
 import { useMemo, useState } from 'react'
 
 export type Testimonial = {
@@ -34,35 +34,16 @@ const Testimonials = ({ items }: TestimonialsProps) => {
   return (
     <Box bg='surface.page' py={[10, 14]}>
       <Container maxW='container.xl'>
+        <HStack align='center' gap={4} w='full'>
           <Button
             variant='ghost'
             onClick={goPrev}
             aria-label='Precedente'
-            position='absolute'
-            left={0}
-            top='50%'
-            transform='translateY(-50%)'
-            zIndex={1}
           >
             ‹
           </Button>
 
-          <Button
-            variant='ghost'
-            onClick={goNext}
-            aria-label='Successivo'
-            position='absolute'
-            right={0}
-            top='50%'
-            transform='translateY(-50%)'
-            zIndex={1}
-          >
-            ›
-          </Button>
-
-      
-
-        <SimpleGrid columns={{ base: 1, md: 3 }} gap={[6, 8, 10]} border='1px solid green'>
+          <SimpleGrid flex='1' columns={{ base: 1, md: 3 }} gap={[6, 8, 10]} border='1px solid green'>
           {visibleItems.map((t) => (
             <VStack
               key={t.id}
@@ -102,7 +83,16 @@ const Testimonials = ({ items }: TestimonialsProps) => {
               ) : null}
             </VStack>
           ))}
-        </SimpleGrid>
+          </SimpleGrid>
+
+          <Button
+            variant='ghost'
+            onClick={goNext}
+            aria-label='Successivo'
+          >
+            ›
+          </Button>
+        </HStack>
       </Container>
     </Box>
   )
