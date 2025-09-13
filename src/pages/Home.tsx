@@ -4,11 +4,14 @@ import { Box, Container, Heading, Image, SimpleGrid, Text, VStack } from '@chakr
 import heroBackgroundHome from '@/assets/images/hero-background-home.png'
 import weightsBackground from '@/assets/images/weights-background.jpg'
 import fitnessStrengthPerformanceNatalieCollars from '@/assets/images/fitness-strength-performance-natalie-collars-light-background.jpg'
+import vintageMedicineBallsBackground from '@/assets/images/vintage-medicine-balls-background.webp'
+import petraPrimoPiano from '@/assets/images/petra-primo-piano.webp'
+import MainButton from '@/components/MainButton';
 
 const Home = () => {
     return (
         <Box>
-            {/* <Heading as="h1" textStyle='title'>
+            {/* <Heading as='h1' textStyle='title'>
                 Coaching Online Personalizzato
             </Heading>
             <Button bg='surface.action'>scopri i piani</Button> */}
@@ -24,9 +27,9 @@ const Home = () => {
             <SimpleGrid 
                 columns={{ base: 1, md: 3 }} 
                 gap={[4, 6, 8]}
-                mx="auto"
-                alignItems="stretch"
-                justifyItems="center"
+                mx='auto'
+                alignItems='stretch'
+                justifyItems='center'
                 w='100%'
             >
                 <BaseCard
@@ -56,87 +59,222 @@ const Home = () => {
             </SimpleGrid>
             <Box minH={'100vh'} position={'relative'}>
             {/* Background Image */}
-            <Box 
-                position={'absolute'} 
-                top={0}
-                left={0}
-                right={0}
-                bottom={0}
-                backgroundImage={`url(${weightsBackground})`}
-                backgroundSize='cover'
-                backgroundPosition='center'
-                backgroundRepeat='no-repeat'
-                zIndex={1}
-            />
-            
-            {/* Dark Overlay */}
-            <Box 
-                position={'absolute'} 
-                top={0}
-                left={0}
-                right={0}
-                bottom={0}
-                bg='hoverlay.default'
-                zIndex={2}
-            />
-            
-            {/* Content */}
-            <Container 
-                position={'relative'} 
-                zIndex={3}
-                maxW='container.xl'
+                <Box 
+                    position={'absolute'} 
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    backgroundImage={`url(${weightsBackground})`}
+                    backgroundSize='cover'
+                    backgroundPosition='center'
+                    backgroundRepeat='no-repeat'
+                    zIndex={1}
+                />
+
+                {/* Dark Overlay */}
+                <Box 
+                    position={'absolute'} 
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    bg='hoverlay.default'
+                    zIndex={2}
+                />
+
+                {/* Content */}
+                <Container 
+                    position={'relative'} 
+                    zIndex={3}
+                    maxW='container.xl'
+                    px={[4, 6, 8]}
+                    py={[16, 20, 24]}
+                    h='100vh'
+                    display='flex'
+                    alignItems='center'
+                    border='1px solid green'
+                >
+
+                    <SimpleGrid
+                        columns={{ base: 1, md: 2 }} 
+                        gap={[11, 6, 8]}
+                        mx='auto'
+                        alignItems='stretch'
+                        justifyItems='flex-start'
+                        w='100%'
+                        border='1px solid white'
+                    >
+                        <VStack align={'flex-start'} gap={[4, 4, 8]}>
+                            <Heading
+                            as = 'h2'
+                            textStyle='h2'
+                            color='text.onDefaultHoverlay'
+                            whiteSpace='pre-line'
+                            lineHeight={1}
+                            >
+                                {`fitness
+                                strength
+                                performance`}
+                            </Heading>
+
+                            <Text
+                                textStyle='md'
+                                color='text.onDefaultHoverlay'
+                            >
+                                Copy che spiega l’approccio all’allenamento, i risultati visti e come 
+                                l’allenamento spinga chi si dedica a trasformare non solo 
+                                le sue performance sportive e il fisico in meglio, 
+                                ma la sua vita intera
+                            </Text>
+                        </VStack>
+
+                        <Image
+                            src={fitnessStrengthPerformanceNatalieCollars}
+                            aspectRatio={['1/1']}
+                            alt='Fitness strength performance'
+                        />
+
+                    </SimpleGrid>
+                </Container>
+            </Box>
+
+            <SimpleGrid
+                columns={{ base: 1, md: 2 }} 
+                gap={[11, 6, 8]}
                 px={[4, 6, 8]}
                 py={[16, 20, 24]}
-                h='100vh'
-                display='flex'
-                alignItems='center'
-                border='1px solid green'
+                alignItems='stretch'
+                justifyItems='flex-start'
+                w='100%'
+                border='3px solid green'
             >
-
-                <SimpleGrid
-                    columns={{ base: 1, md: 2 }} 
-                    gap={[11, 6, 8]}
-                    mx="auto"
-                    alignItems="stretch"
-                    justifyItems="flex-start"
-                    w='100%'
-                    border='1px solid white'
+                <Heading
+                as = 'h2'
+                textStyle='h2'
+                color='heading.onPage'
+                whiteSpace='pre-line'
+                lineHeight={1}
                 >
-                    <VStack align={'flex-start'} gap={[4, 4, 8]}>
-                        <Heading
-                        as = 'h2'
-                        textStyle='h2'
-                        color='text.onDefaultHoverlay'
-                        whiteSpace="pre-line"
-                        lineHeight={1}
+                    {`coaching
+                    online`}
+                </Heading>
+                <VStack 
+                    align='flex-start'
+                    gap={[4, 4, 8]} 
+                    border='1px solid black'
+                >
+                    <Text
+                        textStyle='md'
+                        color='text.onPage'
+                    >
+                        Descrizione generale coaching online, specificare che gli esercizi e la programmazione vengono definiti sulla base del livello dell’atleta o dell’amatore.
+                        Fare riferimento sia a uomini che donne. Frase effetto di chiusura
+                    </Text>
+                    <MainButton
+                        text='scopri di più'
+                        link=''
                         >
-                            {`fitness
-                            strength
-                            performance`}
-                        </Heading>
 
-                        <Text
-                            textStyle='md'
-                            color='text.onDefaultHoverlay'
-                        >
-                            Copy che spiega l’approccio all’allenamento, i risultati visti e come 
-                            l’allenamento spinga chi si dedica a trasformare non solo 
-                            le sue performance sportive e il fisico in meglio, 
-                            ma la sua vita intera
-                        </Text>
-                    </VStack>
+                    </MainButton>
+                </VStack>
 
-                    <Image
-                        src={fitnessStrengthPerformanceNatalieCollars}
-                        aspectRatio={['1/1']}
-                        alt="Fitness strength performance"
-                    />
+            </SimpleGrid>
 
-                </SimpleGrid>
+            {/* Incontra la tua coach section */}
+            <Box minH={'100vh'} position={'relative'}>
+                {/* Background Image */}
+                <Box 
+                    position={'absolute'} 
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    backgroundImage={`url(${vintageMedicineBallsBackground})`}
+                    backgroundSize='cover'
+                    backgroundPosition='center'
+                    backgroundRepeat='no-repeat'
+                    zIndex={1}
+                />
 
-            </Container>
-        </Box>
+                {/* Dark Overlay */}
+                <Box 
+                    position={'absolute'} 
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    bg='hoverlay.default'
+                    zIndex={2}
+                />
 
+                {/* Content */}
+                <Container 
+                    position={'relative'} 
+                    zIndex={3}
+                    maxW='container.xl'
+                    px={[4, 6, 8]}
+                    py={[16, 20, 24]}
+                    h='100vh'
+                    display='flex'
+                    alignItems='center'
+                    border='1px solid green'
+                >
+
+                    <SimpleGrid
+                        columns={{ base: 1, md: 2 }} 
+                        gap={[11, 6, 8]}
+                        mx='auto'
+                        alignItems='stretch'
+                        justifyItems='flex-start'
+                        w='100%'
+                        border='1px solid white'
+                    >
+                        <VStack align={'center'} gap={[4, 4, 8]}>
+                            <Heading
+                                as='h4'
+                                textStyle='h4'
+                                color='heading.onDark'
+                                textAlign='center'
+                            >
+                                incontra la tua coach
+
+                            </Heading>
+                            <Heading
+                                as = 'h2'
+                                textStyle='h2'
+                                color='primary.default'
+                                whiteSpace='pre-line'
+                                lineHeight={1}
+                                textAlign='center'
+                            >
+                                {`petra
+                                scaringelli`}
+                            </Heading>
+
+                            <Text
+                                textStyle='md'
+                                color='text.onDefaultHoverlay'
+                                textAlign='center'
+                            >
+                                Copy che spiega l’approccio all’allenamento, i risultati visti e come 
+                                l’allenamento spinga chi si dedica a trasformare non solo 
+                                le sue performance sportive e il fisico in meglio, 
+                                ma la sua vita intera
+                            </Text>
+                        </VStack>
+
+                        <Image
+                            src={petraPrimoPiano}
+                            aspectRatio={['1/1']}
+                            alt='Coach P - Petra Scaringelli'
+                            objectPosition='center'
+                            objectFit='cover'
+                        />
+
+                    </SimpleGrid>
+                </Container>
+            </Box>
 
         
         </Box>

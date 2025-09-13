@@ -33,6 +33,17 @@ export const textStyles = {
             textTransform: 'uppercase'
         }
     },
+
+    h4: {
+        description: '',
+        value: {
+            fontFamily: '{fonts.h4}',
+            fontSize: ['md', 'lg', 'lg'],
+            lineHeight: 'shorter',
+            fontWeight: 'normal',
+            textTransform: 'uppercase'
+        }
+    },
     
     button: {
         description: '',
@@ -55,66 +66,4 @@ export const textStyles = {
         }       
     }
 
-
-    // // Heading Styles
-    // heading: {
-    //     title: {
-    //         fontFamily: { value: '{fonts.heading.title}' },
-    //         fontSize: { value: '{fontSizes.title}' },
-    //         fontWeight: { value: '{fontWeights.regular}' },
-    //         lineHeight: { value: '{lineHeights.title}' }
-    //     },
-    // },
-
-    // Body Text Styles
-    // body: {
-    //     large: {
-    //         fontSize: { value: '{fontSizes.lg}' },
-    //         fontWeight: { value: '{fontWeights.normal}' },
-    //         lineHeight: { value: '{lineHeights.relaxed}' },
-    //         fontFamily: { value: '{fonts.body}' }
-    //     },
-    //     normal: {
-    //         fontSize: { value: '{fontSizes.md}' },
-    //         fontWeight: { value: '{fontWeights.normal}' },
-    //         lineHeight: { value: '{lineHeights.normal}' },
-    //         fontFamily: { value: '{fonts.body}' }
-    //     },
-    //     small: {
-    //         fontSize: { value: '{fontSizes.sm}' },
-    //         fontWeight: { value: '{fontWeights.normal}' },
-    //         lineHeight: { value: '{lineHeights.normal}' },
-    //         fontFamily: { value: '{fonts.body}' }
-    //     }
-    // },
-
-    // // Special Text Styles
-    // caption: {
-    //     fontSize: { value: '{fontSizes.xs}' },
-    //     fontWeight: { value: '{fontWeights.normal}' },
-    //     lineHeight: { value: '{lineHeights.normal}' },
-    //     fontFamily: { value: '{fonts.body}' }
-    // },
-
-    // // Button Text Styles
-    // button: {
-    //     large: {
-    //         fontSize: { value: '{fontSizes.lg}' },
-    //         fontWeight: { value: '{fontWeights.semibold}' },
-    //         lineHeight: { value: '{lineHeights.none}' },
-    //         fontFamily: { value: '{fonts.body}' }
-    //     },
-    //     normal: {
-    //         fontSize: { value: '{fontSizes.md}' },
-    //         fontWeight: { value: '{fontWeights.medium}' },
-    //         lineHeight: { value: '{lineHeights.none}' },
-    //         fontFamily: { value: '{fonts.body}' }
-    //     },
-    //     small: {
-    //         fontSize: { value: '{fontSizes.sm}' },
-    //         fontWeight: { value: '{fontWeights.medium}' },
-    //         lineHeight: { value: '{lineHeights.none}' },
-    //         fontFamily: { value: '{fonts.body}' }
-    //     }
-    // }
 }

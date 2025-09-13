@@ -38,6 +38,7 @@ export const semanticTokens = {
 
         // Text Colors - Different text contexts
         text: {
+            onPage: { value: '{colors.neutralDark.default}' },
             onSurfaceAction: { value: '{colors.neutralLight.default}' },
             onPrimary: { value: '{colors.neutralLight.default}' },
             onDark: { value: '{colors.neutralLight.default}' },
@@ -48,6 +49,11 @@ export const semanticTokens = {
             inverse: { value: '{colors.white}' },
             link: { value: '{colors.primary}' },
             linkHover: { value: '{colors.flame.600}' },
+        },
+
+        heading: {
+            onPage: { value: '{colors.primary.default}'},
+            onDark: { value: '{colors.neutralLight.default}' }
         },
 
         hoverlay: {
