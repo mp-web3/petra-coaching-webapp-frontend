@@ -49,7 +49,6 @@ const Hero = ({
                 zIndex={3}
                 maxW='container.xl'
                 px={[4, 6, 8]}
-                py={[16, 20, 24]}
                 h='100vh'
                 display='flex'
                 alignItems='center'

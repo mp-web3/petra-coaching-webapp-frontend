@@ -1,18 +1,19 @@
 import { Link as RouterLink } from 'react-router-dom'
-import { Box, Container, HStack, IconButton, useDisclosure, Drawer, VStack, Text, Spacer } from '@chakra-ui/react'
+import { Box, Container, HStack, IconButton, useDisclosure, Drawer, VStack, Text, Image } from '@chakra-ui/react'
 import { LuMenu } from 'react-icons/lu'
+import logo2 from '@/assets/logos/logo-2.png'
 
 function Navigation() {
   const { open, onOpen, onClose } = useDisclosure()
 
   return (
-    <Box as='header' position='fixed' top={0} left={0} right={0} zIndex={1000}>
+    <Box as='header' position='fixed' top={0} left={0} right={0} zIndex={9999} bg='whiteAlpha.50'>
       <Container maxW='container.xl' px={[4, 6, 8]} py={4}>
-        <HStack>
-          <IconButton aria-label='Apri menu' variant='ghost' color='text.onPage' onClick={onOpen} css={{ _icon: { width: '6', height: '6' } }}>
+        <HStack justify='space-between' align='center'>
+          <Image src={logo2} />
+          <IconButton aria-label='Apri menu' variant='ghost' color='white' onClick={onOpen} css={{ _icon: { width: '6', height: '6' } }}>
             <LuMenu />
           </IconButton>
-          <Spacer />
         </HStack>
       </Container>
 

@@ -14,9 +14,7 @@ export default function Layout({ children }: LayoutProps) {
       w="100%"
     >
       <Navigation />
-      <Box pt={[16, 20]}> 
       {children}
-      </Box>
     </Box>
   )
 }
