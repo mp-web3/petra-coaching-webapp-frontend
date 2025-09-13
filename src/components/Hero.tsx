@@ -3,7 +3,8 @@ import MainButton from '@/components/MainButton'
 
 interface HeroProps {
     backgroundImage: string
-    title: string
+    titleLine1: string
+    titleLine2?: string
     buttonText: string
     buttonLink: string
     objectionReducingInfoText: string
@@ -11,7 +12,8 @@ interface HeroProps {
 
 const Hero = ({ 
     backgroundImage, 
-    title, 
+    titleLine1, 
+    titleLine2, 
     buttonText, 
     buttonLink, 
     objectionReducingInfoText,
@@ -66,8 +68,15 @@ const Hero = ({
                         as='h1' 
                         textStyle='title'
                         color='text.onDefaultHoverlay'
+                        whiteSpace='pre-line'
                     >
-                        {title}
+                        {titleLine1}
+                        {titleLine2 ? (
+                            <>
+                                <br />
+                                {titleLine2}
+                            </>
+                        ) : null}
                     </Heading>
                     
                     {/* Call-to-Action Button */}

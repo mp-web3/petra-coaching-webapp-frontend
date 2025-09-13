@@ -16,14 +16,11 @@ import avatarMan2 from '@/assets/images/placeholders/avatar-user-testimonial-man
 const Home = () => {
     return (
         <Box>
-            {/* <Heading as='h1' textStyle='title'>
-                Coaching Online Personalizzato
-            </Heading>
-            <Button bg='surface.action'>scopri i piani</Button> */}
             <Hero 
                 backgroundImage={heroBackgroundHome}
-                title='coaching online personalizzato'
-                buttonText='inizia ora'
+                titleLine1='coaching online'
+                titleLine2='personalizzato'
+                buttonText='scopri i piani'
                 buttonLink=''
                 objectionReducingInfoText='Scopri i miei metodi provati di coaching online personalizzato per uomo e donna'
             
