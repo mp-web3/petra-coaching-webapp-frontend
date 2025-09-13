@@ -6,7 +6,12 @@ import weightsBackground from '@/assets/images/weights-background.jpg'
 import fitnessStrengthPerformanceNatalieCollars from '@/assets/images/fitness-strength-performance-natalie-collars-light-background.jpg'
 import vintageMedicineBallsBackground from '@/assets/images/vintage-medicine-balls-background.webp'
 import petraPrimoPiano from '@/assets/images/petra-primo-piano.webp'
-import MainButton from '@/components/MainButton';
+import MainButton from '@/components/MainButton'
+import Testimonials from '@/components/Testimonials'
+import avatarWoman1 from '@/assets/images/placeholders/avatar-user-testimonial-woman.webp'
+import avatarWoman2 from '@/assets/images/placeholders/avatar-user-testimonial-woman-2.webp'
+import avatarMan1 from '@/assets/images/placeholders/avatar-user-testimonial-man.webp'
+import avatarMan2 from '@/assets/images/placeholders/avatar-user-testimonial-man-2.webp'
 
 const Home = () => {
     return (
@@ -276,7 +281,43 @@ const Home = () => {
                 </Container>
             </Box>
 
-        
+            <Testimonials
+              items={[
+                {
+                  id: 't1',
+                  quote:
+                    'Con Petra ho trovato il giusto equilibrio tra tecnica e motivazione. I risultati sono arrivati in poche settimane.',
+                  author: 'Giulia R.',
+                  role: 'Cliente coaching online',
+                  avatarUrl: avatarWoman2
+                },
+                {
+                  id: 't2',
+                  quote:
+                    'Programmi chiari, supporto costante e attenzione ai dettagli. Mi sento più forte che mai.',
+                  author: 'Luca M.',
+                  role: 'Atleta amatoriale',
+                  avatarUrl: avatarMan1
+                },
+                {
+                  id: 't3',
+                  quote:
+                    'Allenamenti personalizzati e adattati ai miei ritmi. Professionalità e umanità rare.',
+                  author: 'Sara P.',
+                  role: 'Coaching donna',
+                  avatarUrl: avatarWoman1
+                },
+                {
+                  id: 't4',
+                  quote:
+                    'Ho migliorato postura e performance senza infortuni. Consigliatissima.',
+                  author: 'Marco D.',
+                  role: 'Preparazione forza',
+                  avatarUrl: avatarMan2
+                },
+              ]}
+            />
+
         </Box>
     )
 }
