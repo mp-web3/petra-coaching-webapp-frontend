@@ -94,7 +94,7 @@ const Home = () => {
             >
 
                 <SimpleGrid
-                    columns={{ base: 1, md: 3 }} 
+                    columns={{ base: 1, md: 2 }} 
                     gap={[11, 6, 8]}
                     mx="auto"
                     alignItems="stretch"
@@ -102,27 +102,29 @@ const Home = () => {
                     w='100%'
                     border='1px solid white'
                 >
-                    <Heading
-                    as = 'h2'
-                    textStyle='h2'
-                    color='text.onDefaultHoverlay'
-                    whiteSpace="pre-line"
-                    lineHeight={1}
-                    >
-                        {`fitness
-                        strength
-                        performance`}
-                    </Heading>
-
-                    <Text
-                        textStyle='md'
+                    <VStack align={'flex-start'} gap={[4, 4, 8]}>
+                        <Heading
+                        as = 'h2'
+                        textStyle='h2'
                         color='text.onDefaultHoverlay'
-                    >
-                        Copy che spiega l’approccio all’allenamento, i risultati visti e come 
-                        l’allenamento spinga chi si dedica a trasformare non solo 
-                        le sue performance sportive e il fisico in meglio, 
-                        ma la sua vita intera
-                    </Text>
+                        whiteSpace="pre-line"
+                        lineHeight={1}
+                        >
+                            {`fitness
+                            strength
+                            performance`}
+                        </Heading>
+
+                        <Text
+                            textStyle='md'
+                            color='text.onDefaultHoverlay'
+                        >
+                            Copy che spiega l’approccio all’allenamento, i risultati visti e come 
+                            l’allenamento spinga chi si dedica a trasformare non solo 
+                            le sue performance sportive e il fisico in meglio, 
+                            ma la sua vita intera
+                        </Text>
+                    </VStack>
 
                     <Image
                         src={fitnessStrengthPerformanceNatalieCollars}
