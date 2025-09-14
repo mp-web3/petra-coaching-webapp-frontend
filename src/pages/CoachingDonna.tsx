@@ -1,5 +1,5 @@
-import { Box, Container, Heading, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react';
-import Hero from '@/components/Hero'
+import { Box } from '@chakra-ui/react';
+import { Hero, SectionWithImageAndText, TripleAccordion } from '@/components'
 import donnaCoachingOnline from '@/assets/images/donna-coaching-online-trx.jpg'
 import giovaneDonnaClienteTipo from '@/assets/images/giovane-donna-cliente-tipo-coaching-online.jpg'
 
@@ -17,46 +17,40 @@ const CoachingDonna = () => {
 
             />
 
-            <SimpleGrid
-                columns={{ base: 1, md: 2 }} 
-                gap={[11, 6, 8]}
-                px={[4, 6, 8]}
-                py={[16, 20, 24]}
-                mx='auto'
-                alignItems='stretch'
-                justifyItems='flex-start'
-                w='100%'
-                border='1px solid white'
-            >
-                <VStack align={'flex-start'} gap={[4, 4, 8]}>
-                    <Heading
-                    as = 'h2'
-                    textStyle='h2'
-                    color='text.onPage'
-                    lineHeight={1}
-                    >
-                        il mio programma fa per te?
-                    </Heading>
-                    <Image
-                        src={giovaneDonnaClienteTipo}
-                        aspectRatio={['1/1']}
-                        alt='Giovane donna coaching online'
-                    />
-                </VStack>
-
-                <Text
-                    textStyle='sm'
-                    color='text.onPage'
-                >
-                    Sogni di iniziare ad allenarti ma non sai come muovere i primi passi?
-                    Ti senti persa quando varchi la soglia della palestra? Ti alleni da tempo senza vedere i risultati che desideri?
-                    Cerchi un programma specificamente pensato per il corpo e le esigenze femminili? Vuoi spingerti oltre i tuoi limiti e scoprire di cosa sei davvero capace? Vuoi rimetterti in forma e sentirti bene con te stessa?
-                    Se ti riconosci in almeno una di queste domande, sei nel posto giusto.
-                    Il mio coaching è nato proprio per rispondere a questi bisogni, per offrirti la guida e il supporto che hai sempre cercato. Non importa da dove parti o quali sono i tuoi obiettivi: insieme troveremo la strada giusta per te.
-                </Text>
+            <SectionWithImageAndText
+                heading='il mio programma fa per te?'
+                imageUrl={giovaneDonnaClienteTipo}
+                imageAlt='Giovane donna coaching online'
+                text={`Sogni di iniziare ad allenarti ma non sai come muovere i primi passi?
+                        Ti senti persa quando varchi la soglia della palestra? Ti alleni da tempo senza vedere i risultati che desideri?
+                        Cerchi un programma specificamente pensato per il corpo e le esigenze femminili? Vuoi spingerti oltre i tuoi limiti e scoprire di cosa sei davvero capace? Vuoi rimetterti in forma e sentirti bene con te stessa?
+                        Se ti riconosci in almeno una di queste domande, sei nel posto giusto.
+                        Il mio coaching è nato proprio per rispondere a questi bisogni, per offrirti la guida e il supporto che hai sempre cercato. Non importa da dove parti o quali sono i tuoi obiettivi: insieme troveremo la strada giusta per te.`}
+            />
 
 
-            </SimpleGrid>
+            {/* Accordion */}
+            <TripleAccordion 
+                items={[
+                    {
+                        title: 'valorizzazione forme femminili', 
+                        text: `Percorso mirato a valorizzare le forme femminili, puntando a un rimodellamento armonico del corpo, con focus specifico su glutei, schiena e addome per creare quella "V-shape" tanto desiderata. 
+                                Un approccio "su misura" che combina sviluppo muscolare mirato e tonificazione total body per esaltare la naturale bellezza del corpo femminile.`,
+                    },
+                    {
+                        title: 'sviluppo forza', 
+                        text: `persorso mirato allo sviluppo della forza: siamo donne, siamo forti! Un cammino per le donne coraggiose, pronte a fidarsi del proprio corpo e scoprire tutte le sue potenzialità. 
+                                Un percorso che sfida i "limiti" autoimposti e rivela la vera forza che è in ogni donna.`,
+                    },
+                    {
+                        title: 'fitness', 
+                        text: `percorso dedicato a ritrovare la forma fisica e benessere generale. 
+                                Un programma completo per chi si sente "fuori forma" e vuole riconquistare tonicità, energia e consapevolezza del proprio corpo.`,
+                    },
+                    ]}
+            
+            />
+
         </Box>
     )
 }
