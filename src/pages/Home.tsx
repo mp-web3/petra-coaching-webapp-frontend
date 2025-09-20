@@ -192,6 +192,7 @@ const Home = () => {
                     maxW='container.xl'
                     px={[4, 6, 8]}
                     py={[16, 20, 24]}
+                    gap={[4, 4, 8]}
                     h='100vh'
                     display='flex'
                     alignItems='center'
@@ -228,6 +229,16 @@ const Home = () => {
                                 {`petra
                                 scaringelli`}
                             </Heading>
+                            {/* Mobile-only image under heading */}
+                            <Image
+                                src={petraPrimoPiano}
+                                aspectRatio={['1/1']}
+                                alt='Coach P - Petra Scaringelli'
+                                objectPosition='center'
+                                objectFit='cover'
+                                maxW={['60%', '100%']}
+                                display={['block', 'none']}
+                            />
                             <Text
                                 textStyle='md'
                                 color='text.onDefaultHoverlay'
@@ -249,6 +260,7 @@ const Home = () => {
                             objectPosition='center'
                             objectFit='cover'
                             maxW={['50%', '100%']}
+                            display={['none', 'block']}
                         />
 
 
