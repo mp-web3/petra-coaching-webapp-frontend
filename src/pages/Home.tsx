@@ -6,7 +6,8 @@ import weightsBackground from '@/assets/images/weights-background.jpg'
 import fitnessStrengthPerformanceNatalieCollars from '@/assets/images/fitness-strength-performance-natalie-collars-light-background.jpg'
 import vintageMedicineBallsBackground from '@/assets/images/vintage-medicine-balls-background.webp'
 import petraPrimoPiano from '@/assets/images/petra-primo-piano.webp'
-import MainButton from '@/components/MainButton'
+// import MainButton from '@/components/MainButton'
+import { TwoColumnIntro } from '@/components'
 import Testimonials from '@/components/Testimonials'
 import avatarWoman1 from '@/assets/images/placeholders/avatar-user-testimonial-woman.webp'
 import avatarWoman2 from '@/assets/images/placeholders/avatar-user-testimonial-woman-2.webp'
@@ -125,10 +126,9 @@ const Home = () => {
                                 textStyle='md'
                                 color='text.onDefaultHoverlay'
                             >
-                                Copy che spiega l’approccio all’allenamento, i risultati visti e come 
-                                l’allenamento spinga chi si dedica a trasformare non solo 
-                                le sue performance sportive e il fisico in meglio, 
-                                ma la sua vita intera
+                                Credo che un coaching efficace nasca da un legame autentico tra coach e atleta. Non si tratta solo di allenamenti e risultati, ma di fiducia, comunicazione e condivisione.
+                                Il coaching non è solo una scheda da seguire, ma un percorso personalizzato che tiene conto delle tue esigenze, dei tuoi ritmi e delle tue aspirazioni.
+                                Per me, l’obiettivo è costruire insieme un cambiamento duraturo, porsi nuove sfide, impegnarsi con passione e, soprattutto, divertirsi lungo il percorso.
                             </Text>
                         </VStack>
 
@@ -142,47 +142,21 @@ const Home = () => {
                 </Container>
             </Box>
 
-            <SimpleGrid
-                columns={{ base: 1, md: 2 }} 
-                gap={[11, 6, 8]}
-                px={[4, 6, 8]}
-                py={[16, 20, 24]}
-                alignItems='stretch'
-                justifyItems='flex-start'
-                w='100%'
-                border='3px solid green'
-            >
-                <Heading
-                as = 'h2'
-                textStyle='h2'
-                color='heading.onPage'
-                whiteSpace='pre-line'
-                lineHeight={1}
-                >
-                    {`coaching
-                    online`}
-                </Heading>
-                <VStack 
-                    align='flex-start'
-                    gap={[4, 4, 8]} 
-                    border='1px solid black'
-                >
-                    <Text
-                        textStyle='md'
-                        color='text.onPage'
-                    >
-                        Descrizione generale coaching online, specificare che gli esercizi e la programmazione vengono definiti sulla base del livello dell’atleta o dell’amatore.
-                        Fare riferimento sia a uomini che donne. Frase effetto di chiusura
-                    </Text>
-                    <MainButton
-                        text='scopri di più'
-                        link=''
-                        >
+            {/* Coaching Online */}
+            <TwoColumnIntro
+                heading={`coaching\nonline`}
+                text={'Il nostro percorso di coaching online inizia qui.\n\nPropongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell\'esecuzione degli esercizi.'}
+                buttonText='scopri di più'
+                buttonLink=''
+            />
 
-                    </MainButton>
-                </VStack>
-
-            </SimpleGrid>
+            {/* Personal Training */}
+            <TwoColumnIntro
+                heading={`personal\ntraining 1:1\nin presenza`}
+                text={'Vuoi portare il tuo percorso a un livello superiore?\n\nAffianca al coaching online delle sessioni esclusive di personal training 1:1 in presenza: un\'occasione per lavorare fianco a fianco, perfezionare tecnica, postura e consapevolezza del movimento con massima attenzione e cura.\n\nScrivimi per ricevere tutte le info e scoprire'}
+                buttonText='scrivimi ora'
+                buttonLink=''
+            />
 
             {/* Incontra la tua coach section */}
             <Box minH={'100vh'} position={'relative'}>
@@ -221,59 +195,62 @@ const Home = () => {
                     h='100vh'
                     display='flex'
                     alignItems='center'
+                    flexDirection='column'
                     border='1px solid green'
                 >
+                    <Heading
+                        as='h4'
+                        textStyle='h4'
+                        color='heading.onDark'
+                        textAlign='center'
+                    >
+                        incontra la tua coach
+                    </Heading>
 
                     <SimpleGrid
                         columns={{ base: 1, md: 2 }} 
                         gap={[11, 6, 8]}
                         mx='auto'
                         alignItems='stretch'
-                        justifyItems='flex-start'
+                        justifyItems={['center', 'flex-start']}
                         w='100%'
                         border='1px solid white'
                     >
-                        <VStack align={'center'} gap={[4, 4, 8]}>
-                            <Heading
-                                as='h4'
-                                textStyle='h4'
-                                color='heading.onDark'
-                                textAlign='center'
-                            >
-                                incontra la tua coach
-
-                            </Heading>
+                        <VStack align={['center', 'flex-start']} justifySelf='left' gap={[4, 4, 8]}>
                             <Heading
                                 as = 'h2'
                                 textStyle='h2'
                                 color='primary.default'
                                 whiteSpace='pre-line'
                                 lineHeight={1}
-                                textAlign='center'
+                                textAlign={['center', 'left']}
                             >
                                 {`petra
                                 scaringelli`}
                             </Heading>
-
                             <Text
                                 textStyle='md'
                                 color='text.onDefaultHoverlay'
-                                textAlign='center'
+                                textAlign={['center', 'left']}
+                                whiteSpace='pre-line'
                             >
-                                Copy che spiega l’approccio all’allenamento, i risultati visti e come 
-                                l’allenamento spinga chi si dedica a trasformare non solo 
-                                le sue performance sportive e il fisico in meglio, 
-                                ma la sua vita intera
+                                {`Mi chiamo Petra e il mio primo amore… aveva i guantoni.
+                                
+                                Il pugilato agonistico mi ha introdotta al mondo dello sport, insegnandomi disciplina, forza mentale e il coraggio di superare i miei limiti. Dopo questa esperienza, ho continuato il mio percorso in palestra, tra body-building, allenamento funzionale e powerlifting.
+                                
+                                Oggi sono una personal trainer e coach online, e propongo percorsi personalizzati con un approccio basato sull'ascolto, la fiducia e il rapporto autentico tra coach e atleta. Perché, per me, l'allenamento è molto più di serie e ripetizioni: è un modo per sentirsi forti, presenti e… nel posto giusto.`}
                             </Text>
-                        </VStack>
 
+                        </VStack>
                         <Image
                             src={petraPrimoPiano}
                             aspectRatio={['1/1']}
                             alt='Coach P - Petra Scaringelli'
                             objectPosition='center'
                             objectFit='cover'
+                            maxW={['50%', '100%']}
                         />
+
 
                     </SimpleGrid>
                 </Container>

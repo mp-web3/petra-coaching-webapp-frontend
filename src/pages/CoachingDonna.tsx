@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import { Hero, SectionWithImageAndText, TripleAccordion } from '@/components'
+import { Hero, SectionWithImageAndText, TripleAccordion, Steps } from '@/components'
 import donnaCoachingOnline from '@/assets/images/donna-coaching-online-trx.jpg'
 import giovaneDonnaClienteTipo from '@/assets/images/giovane-donna-cliente-tipo-coaching-online.jpg'
 
@@ -49,6 +49,43 @@ const CoachingDonna = () => {
                     },
                     ]}
             
+            />
+
+            <Steps 
+                heading="Passo a passo la tua trasformazione assieme a me"
+                items={[
+                    {
+                        number: 1,
+                        title: 'STEP 1',
+                        subtitle: 'Consulenza video iniziale',
+                        bullets: [
+                            'Ti ascolterò per conoscere la tua storia e le tue esperienze passate con fitness e sport',
+                            'Analizzeremo insieme il tuo punto di partenza attuale, esploreremo i tuoi obiettivi e le tue aspettative',
+                            'Definiremo il percorso più adatto a te, valutando impegno e motivazione',
+                        ],
+                    },
+                    {
+                        number: 2,
+                        title: 'STEP 2',
+                        subtitle: 'Il tuo primo piano personalizzato',
+                        bullets: [
+                            'Creerò un programma di allenamento pensato esclusivamente per te',
+                            "Riceverai l'accesso alla tua App personale entro 5 giorni lavorativi",
+                            'Troverai la prima scheda di 6 settimane con video dimostrativi per ogni esercizio',
+                        ],
+                    },
+                    {
+                        number: 3,
+                        title: 'STEP 3',
+                        subtitle: 'Feedback e monitoraggio costante',
+                        bullets: [
+                            'Potrai contattarmi via WhatsApp per qualsiasi dubbio o domanda',
+                            'Potrai inviarmi video esecuzioni degli esercizi per ricevere feedback immediati sulla tecnica',
+                            'Ogni 5 settimane faremo una consulenza video (inclusa nel pacchetto)',
+                            'Insieme faremo il punto sui progressi e pianificheremo i passi successivi',
+                        ],
+                    },
+                ]}
             />
 
         </Box>
