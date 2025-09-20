@@ -61,7 +61,8 @@ const Home = () => {
                     descriptionColor='text.onDark'
                 />
             </SimpleGrid>
-            <Box minH={'100vh'} position={'relative'}>
+            {/* IL METODO */}
+            <Box minH={'auto'} position={'relative'}>
             {/* Background Image */}
                 <Box 
                     position={'absolute'} 
@@ -94,7 +95,7 @@ const Home = () => {
                     maxW='container.xl'
                     px={[4, 6, 8]}
                     py={[16, 20, 24]}
-                    h='100vh'
+                    h='auto'
                     display='flex'
                     alignItems='center'
                     border='1px solid green'
@@ -117,9 +118,7 @@ const Home = () => {
                             whiteSpace='pre-line'
                             lineHeight={1}
                             >
-                                {`fitness
-                                strength
-                                performance`}
+                                {`il metodo`}
                             </Heading>
                             <ReadMore
                                 text={`Credo che un coaching efficace nasca da un legame autentico tra coach e atleta. Non si tratta solo di allenamenti e risultati, ma di fiducia, comunicazione e condivisione.
