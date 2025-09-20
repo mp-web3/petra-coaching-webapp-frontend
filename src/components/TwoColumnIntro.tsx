@@ -1,4 +1,4 @@
-import { Heading, SimpleGrid, Text, VStack } from '@chakra-ui/react'
+import { Heading, SimpleGrid, Text, VStack, Container } from '@chakra-ui/react'
 import MainButton from './MainButton'
 
 interface TwoColumnIntroProps {
@@ -6,15 +6,25 @@ interface TwoColumnIntroProps {
     text: string
     buttonText: string
     buttonLink: string
+    reverse?: boolean
 }
 
-function TwoColumnIntro({ heading, text, buttonText, buttonLink }: TwoColumnIntroProps) {
+function TwoColumnIntro({ heading, text, buttonText, buttonLink, reverse = false }: TwoColumnIntroProps) {
     return (
+        <Container 
+        position={'relative'} 
+        zIndex={3}
+        maxW='container.xl'
+        px={[4, 6, 8]}
+        py={[16, 20, 24]}
+        h='auto'
+        display='flex'
+        alignItems='center'
+        border='1px solid green'
+    >
         <SimpleGrid
             columns={{ base: 1, md: 2 }} 
             gap={[11, 6, 8]}
-            px={[4, 6, 8]}
-            py={[16, 20, 24]}
             alignItems='stretch'
             justifyItems='flex-start'
             w='100%'
@@ -26,12 +36,15 @@ function TwoColumnIntro({ heading, text, buttonText, buttonLink }: TwoColumnIntr
                 color='heading.onPage'
                 whiteSpace='pre-line'
                 lineHeight={1}
+                order={{ base: 0, md: reverse ? 1 : 0 }}
             >
                 {heading}
             </Heading>
             <VStack 
                 align='flex-start'
+                justify='center'
                 gap={[4, 4, 8]} 
+                order={{ base: 1, md: reverse ? 0 : 1 }}
             >
                 <Text
                     textStyle='md'
@@ -43,6 +56,7 @@ function TwoColumnIntro({ heading, text, buttonText, buttonLink }: TwoColumnIntr
                 <MainButton text={buttonText} link={buttonLink} />
             </VStack>
         </SimpleGrid>
+        </Container>
     )
 }
 

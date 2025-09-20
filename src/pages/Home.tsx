@@ -7,7 +7,7 @@ import fitnessStrengthPerformanceNatalieCollars from '@/assets/images/fitness-st
 import vintageMedicineBallsBackground from '@/assets/images/vintage-medicine-balls-background.webp'
 import petraPrimoPiano from '@/assets/images/petra-primo-piano.webp'
 // import MainButton from '@/components/MainButton'
-import { TwoColumnIntro } from '@/components'
+import { TwoColumnIntro, ReadMore } from '@/components'
 import Testimonials from '@/components/Testimonials'
 import avatarWoman1 from '@/assets/images/placeholders/avatar-user-testimonial-woman.webp'
 import avatarWoman2 from '@/assets/images/placeholders/avatar-user-testimonial-woman-2.webp'
@@ -121,15 +121,13 @@ const Home = () => {
                                 strength
                                 performance`}
                             </Heading>
-
-                            <Text
-                                textStyle='md'
-                                color='text.onDefaultHoverlay'
-                            >
-                                Credo che un coaching efficace nasca da un legame autentico tra coach e atleta. Non si tratta solo di allenamenti e risultati, ma di fiducia, comunicazione e condivisione.
-                                Il coaching non è solo una scheda da seguire, ma un percorso personalizzato che tiene conto delle tue esigenze, dei tuoi ritmi e delle tue aspirazioni.
-                                Per me, l’obiettivo è costruire insieme un cambiamento duraturo, porsi nuove sfide, impegnarsi con passione e, soprattutto, divertirsi lungo il percorso.
-                            </Text>
+                            <ReadMore
+                                text={`Credo che un coaching efficace nasca da un legame autentico tra coach e atleta. Non si tratta solo di allenamenti e risultati, ma di fiducia, comunicazione e condivisione.
+                                    Il coaching non è solo una scheda da seguire, ma un percorso personalizzato che tiene conto delle tue esigenze, dei tuoi ritmi e delle tue aspirazioni.
+                                    Per me, l'obiettivo è costruire insieme un cambiamento duraturo, porsi nuove sfide, impegnarsi con passione e, soprattutto, divertirsi lungo il percorso.`}
+                                truncateAt={`ma un percorso personalizzato`}
+                                textProps={{ textStyle: 'md', color: 'text.onDefaultHoverlay', textAlign: 'left', whiteSpace: 'pre-line' }}
+                            />
                         </VStack>
 
                         <Image
@@ -145,7 +143,7 @@ const Home = () => {
             {/* Coaching Online */}
             <TwoColumnIntro
                 heading={`coaching\nonline`}
-                text={'Il nostro percorso di coaching online inizia qui.\n\nPropongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell\'esecuzione degli esercizi.'}
+                text={`Il nostro percorso di coaching online inizia qui. Propongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell'esecuzione degli esercizi.`}
                 buttonText='scopri di più'
                 buttonLink=''
             />
@@ -156,6 +154,7 @@ const Home = () => {
                 text={'Vuoi portare il tuo percorso a un livello superiore?\n\nAffianca al coaching online delle sessioni esclusive di personal training 1:1 in presenza: un\'occasione per lavorare fianco a fianco, perfezionare tecnica, postura e consapevolezza del movimento con massima attenzione e cura.\n\nScrivimi per ricevere tutte le info e scoprire'}
                 buttonText='scrivimi ora'
                 buttonLink=''
+                reverse
             />
 
             {/* Incontra la tua coach section */}
