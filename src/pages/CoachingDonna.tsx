@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import { AppAccessSection, Hero, SectionWithImageAndText, TripleAccordion, Steps } from '@/components'
+import { AppAccessSection, Hero, SectionWithImageAndText, TripleAccordion, Steps, SubscriptionPlanCardsSlider } from '@/components'
 import donnaCoachingOnline from '@/assets/images/donna-coaching-online-trx.jpg'
 import giovaneDonnaClienteTipo from '@/assets/images/giovane-donna-cliente-tipo-coaching-online.jpg'
 import videoLibraryIcon from '@/assets/icons/video_library_primary.svg'
@@ -120,6 +120,139 @@ const CoachingDonna = () => {
                         featureTitle: 'Video Istruttivi',
                         featureText: 'Video esplicativi per ogni esercizio con dimostrazioni tecniche complete',
                     },
+                ]}
+            />
+
+            <SubscriptionPlanCardsSlider 
+                plans={[
+                    {
+                        title: 'premium 6 settimane',
+                        subtitle: '6 settimane (+ di 1 mese)',
+                        priceLabel: '€150',
+                        ctaText: 'scegli',
+                        features: [
+                            {
+                                id: '1',
+                                label: '1 consulenza video iniziale'
+                            },
+                            {
+                                id: '2',
+                                label: '1 Piano di allenamento personalizzato'
+                            },
+                            {
+                                id: '3',
+                                label: '5 Consulenze video di monitoraggio'
+                            },
+                            {
+                                id: '4',
+                                label: 'Programmazione obiettivi quadrimestrale'
+                            },
+                            {
+                                id: '5',
+                                label: 'Accesso all\'app con il tuo piano personalizzato'
+                            },
+                            {
+                                id: '6',
+                                label: 'Video tutorial esercizi'
+                            },
+                            {
+                                id: '7',
+                                label: 'Supporto e assistenza costante via WhatsApp | PRIORITARIA'
+                            },
+                            {
+                                id: '8',
+                                label: 'Correzione video-esecuzioni esercizi | PRIORITARIA'
+                            },
+
+                        ],
+
+                    },
+                    {
+                        title: 'premium 18 settimane',
+                        subtitle: '18 settimane (+ di 4 mesi)',
+                        priceLabel: '€405',
+                        ctaText: 'scegli',
+                        features: [
+                            {
+                                id: '1',
+                                label: '1 consulenza video iniziale'
+                            },
+                            {
+                                id: '2',
+                                label: '6 Piani di allenamento personalizzato'
+                            },
+                            {
+                                id: '3',
+                                label: '5 Consulenze video di monitoraggio'
+                            },
+                            {
+                                id: '4',
+                                label: 'Programmazione obiettivi quadrimestrale'
+                            },
+                            {
+                                id: '5',
+                                label: 'Accesso all\'app con il tuo piano personalizzato'
+                            },
+                            {
+                                id: '6',
+                                label: 'Video tutorial esercizi'
+                            },
+                            {
+                                id: '7',
+                                label: 'Supporto e assistenza costante via WhatsApp | PRIORITARIA'
+                            },
+                            {
+                                id: '8',
+                                label: 'Correzione video-esecuzioni esercizi | PRIORITARIA'
+                            },
+
+                        ],
+                        highlighted: true
+
+                    },
+                    {
+                        title: 'premium 36 settimane',
+                        subtitle: '36 settimane (+ di 8 mesi)',
+                        priceLabel: '€750',
+                        ctaText: 'scegli',
+                        features: [
+                            {
+                                id: '1',
+                                label: '1 consulenza video iniziale'
+                            },
+                            {
+                                id: '2',
+                                label: '6 Piani di allenamento personalizzato'
+                            },
+                            {
+                                id: '3',
+                                label: '5 Consulenze video di monitoraggio'
+                            },
+                            {
+                                id: '4',
+                                label: 'Programmazione obiettivi quadrimestrale'
+                            },
+                            {
+                                id: '5',
+                                label: 'Accesso all\'app con il tuo piano personalizzato'
+                            },
+                            {
+                                id: '6',
+                                label: 'Video tutorial esercizi'
+                            },
+                            {
+                                id: '7',
+                                label: 'Supporto e assistenza costante via WhatsApp | PRIORITARIA'
+                            },
+                            {
+                                id: '8',
+                                label: 'Correzione video-esecuzioni esercizi | PRIORITARIA'
+                            },
+
+                        ],
+
+                    },
+
                 ]}
             />
 
