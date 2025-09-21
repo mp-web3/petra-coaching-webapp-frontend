@@ -6,6 +6,7 @@ import videoLibraryIcon from '@/assets/icons/video_library_primary.svg'
 import calendarMonthIcon from '@/assets/icons/calendar_month_primary.svg'
 import editNoteIcon from '@/assets/icons/edit_note_primary.svg'
 import formatListNumberedIcon from '@/assets/icons/format_list_numbered_primary.svg'
+import coachPlusIphoneMockupImage from '@/assets/images/coachplus-iphone-mockup.png'
 
 
 
@@ -121,6 +122,8 @@ const CoachingDonna = () => {
                         featureText: 'Video esplicativi per ogni esercizio con dimostrazioni tecniche complete',
                     },
                 ]}
+                mockupImageSrc={coachPlusIphoneMockupImage}
+                mockupImageAlt='iphone displaying open app coach plus'
             />
 
             <SubscriptionPlanCardsSlider 
