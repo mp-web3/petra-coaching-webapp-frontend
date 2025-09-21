@@ -5,5 +5,6 @@ export { default as SectionWithImageAndText } from './SectionWithImageAndText'
 export { default as Steps } from './Steps'
 export { default as TwoColumnIntro } from './TwoColumnIntro'
 export { default as ReadMore } from './ReadMore'
+export { default as AppAccessSection } from './AppAccessSection'
 
 

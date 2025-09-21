@@ -59,7 +59,7 @@ export default function Steps({ heading, items }: StepsProps) {
                     {heading}
                 </Heading>
             )}
-            <Stack position="relative" _before={{ content: '""', position: 'absolute', left: 6, top: 0, bottom: 0, width: '2px', bg: 'border.default' }} gap={10}>
+            <Stack position="relative" gap={10}>
                 {items.map((item) => (
                     <Step key={item.number} {...item} />
                 ))}

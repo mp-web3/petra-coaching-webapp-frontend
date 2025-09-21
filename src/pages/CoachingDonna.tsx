@@ -1,7 +1,12 @@
 import { Box } from '@chakra-ui/react';
-import { Hero, SectionWithImageAndText, TripleAccordion, Steps } from '@/components'
+import { AppAccessSection, Hero, SectionWithImageAndText, TripleAccordion, Steps } from '@/components'
 import donnaCoachingOnline from '@/assets/images/donna-coaching-online-trx.jpg'
 import giovaneDonnaClienteTipo from '@/assets/images/giovane-donna-cliente-tipo-coaching-online.jpg'
+import videoLibraryIcon from '@/assets/icons/video_library_primary.svg'
+import calendarMonthIcon from '@/assets/icons/calendar_month_primary.svg'
+import editNoteIcon from '@/assets/icons/edit_note_primary.svg'
+import formatListNumberedIcon from '@/assets/icons/format_list_numbered_primary.svg'
+
 
 
 const CoachingDonna = () => {
@@ -84,6 +89,36 @@ const CoachingDonna = () => {
                             'Ogni 5 settimane faremo una consulenza video (inclusa nel pacchetto)',
                             'Insieme faremo il punto sui progressi e pianificheremo i passi successivi',
                         ],
+                    },
+                ]}
+            />
+
+            <AppAccessSection 
+                heading={`accesso all'app`}
+                features={[
+                    {
+                        featureIconSrc: videoLibraryIcon,
+                        featureIconAlt: 'Video tutorial',
+                        featureTitle: 'Video Tutorial Dettagliati',
+                        featureText: 'Sequenze di esercizi dettagliate con serie, ripetizioni, tempi di recupero e note tecniche di esecuzione',
+                    },
+                    {
+                        featureIconSrc: calendarMonthIcon,
+                        featureIconAlt: 'Calendario',
+                        featureTitle: 'Piani di Allenamento Personalizzati',
+                        featureText: 'Accesso a piani di allenamento di sei settimane completamente personalizzati per i tuoi obiettivi',
+                    },
+                    {
+                        featureIconSrc: editNoteIcon,
+                        featureIconAlt: 'Feedback',
+                        featureTitle: 'Feedback Post-Allenamento',
+                        featureText: 'Possibilità di fornire feedback dopo ogni allenamento per monitorare progressi e adattamenti',
+                    },
+                    {
+                        featureIconSrc: formatListNumberedIcon,
+                        featureIconAlt: 'Video istruttivi',
+                        featureTitle: 'Video Istruttivi',
+                        featureText: 'Video esplicativi per ogni esercizio con dimostrazioni tecniche complete',
                     },
                 ]}
             />
