@@ -157,11 +157,13 @@ const CoachingDonna = () => {
                             },
                             {
                                 id: '7',
-                                label: 'Supporto e assistenza costante via WhatsApp | PRIORITARIA'
+                                label: 'Supporto e assistenza costante via WhatsApp',
+                                checked: false
                             },
                             {
                                 id: '8',
-                                label: 'Correzione video-esecuzioni esercizi | PRIORITARIA'
+                                label: 'Correzione video-esecuzioni esercizi',
+                                checked: false
                             },
 
                         ],

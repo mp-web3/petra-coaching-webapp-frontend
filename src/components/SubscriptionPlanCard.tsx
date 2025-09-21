@@ -1,11 +1,11 @@
 import { Button, HStack, Heading, Text, VStack, Image } from '@chakra-ui/react'
-import checkCirclePrimaryIcon from '@/assets/icons/check_circle_primary.svg'
-import cancelCircleIcon from '@/assets/icons/cancel_primary.svg'
+import donePrimaryIcon from '@/assets/icons/done_primary.svg'
+import closePrimaryIcon from '@/assets/icons/close_primary.svg'
 
 export interface SubscriptionPlanFeature {
     id: string
     label: string
-    checked: boolean
+    checked?: boolean
 }
 
 export interface SubscriptionPlanCardProps {
@@ -47,7 +47,7 @@ export default function SubscriptionPlanCard({ title, subtitle, priceLabel, ctaT
             <VStack as='ul' m={0} p={0} w='full' align='flex-start' gap={3}>
                 {features.map((f) => (
                     <HStack as='li' key={f.id} alignItems='flex-start' gap={3}>
-                        <Image src={ features.checked ? checkCirclePrimaryIcon : cancelCircleIcon} alt='' boxSize={5} mt={0.5} />
+                        <Image src={(f.checked ?? true) ? donePrimaryIcon : closePrimaryIcon} alt='' boxSize={5} mt={0.5} />
                         <Text>{f.label}</Text>
                     </HStack>
                 ))}
