@@ -21,7 +21,7 @@ interface PremiumBenefitsSectionProps {
 
 export default function PremiumBenefitsSection({ heading, highlight, items, ctaText, ctaLink, onCtaClick, showCta = true }: PremiumBenefitsSectionProps) {
     return (
-        <Box bg='secondary.dark' color='text.onDark' px={[4, 6, 8]} py={[12, 16, 20]}>
+        <Box bg='surface.dark' color='text.onDark' px={[4, 6, 8]} py={[12, 16, 20]}>
             <VStack gap={[8, 10]} align='center' textAlign='center' maxW='container.xl' mx='auto'>
                 <Heading as='h2' textStyle='h2' color='text.onDark'>
                     {heading} <Text as='span' color='primary.default'>{highlight}</Text>

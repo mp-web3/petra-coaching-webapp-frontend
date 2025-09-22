@@ -31,13 +31,33 @@ const Home = () => {
             
             />
 
-            {/* Coaching Online */}
-            <TwoColumnIntro
-                heading={`coaching\nonline`}
-                text={`Il nostro percorso di coaching online inizia qui. Propongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell'esecuzione degli esercizi.`}
-                buttonText='scopri di più'
-                buttonLink=''
-            />
+            <SimpleGrid
+                columns={{ base: 1, md: 2 }} 
+                mx='auto'
+                alignItems='stretch'
+                justifyItems='flex-start'
+                w='100%'
+                h='vh'
+            >
+                {/* Coaching Online Donna*/}
+                <TwoColumnIntro
+                    heading={`coaching online donna`}
+                    text={`Il nostro percorso di coaching online inizia qui. Propongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell'esecuzione degli esercizi.`}
+                    buttonText='scopri di più'
+                    buttonLink=''
+                />
+
+                {/* Coaching Online Uomo*/}
+                <TwoColumnIntro
+                    heading={`coaching online uomo`}
+                    text={`Il nostro percorso di coaching online inizia qui. Propongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell'esecuzione degli esercizi.`}
+                    buttonText='scopri di più'
+                    buttonLink=''
+                    variant='dark'
+                />
+            </SimpleGrid>
+            
+
             {/* IL METODO */}
             <Box minH={'auto'} position={'relative'}>
             {/* Background Image */}

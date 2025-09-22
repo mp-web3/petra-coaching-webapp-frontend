@@ -66,7 +66,7 @@ const Hero = ({
                     {/* Main Heading */}
                     <Heading 
                         as='h1' 
-                        textStyle='title'
+                        textStyle='h1'
                         color='text.onDefaultHoverlay'
                         whiteSpace='pre-line'
                     >

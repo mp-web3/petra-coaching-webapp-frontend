@@ -12,12 +12,24 @@ export const textStyles = {
         }
     },
 
+    h1: {
+        description: '',
+        value: {
+            fontFamily: '{fonts.h1}',
+            fontSize: ['7xl', '7xl', '9xl'],
+            lineHeight: 'shorter',
+            fontWeight: 'normal',
+            textTransform: 'uppercase',
+            letterSpacing: 'normal'
+        }
+    },
+
     h2: {
         description: '',
         value: {
             fontFamily: '{fonts.h2}',
-            fontSize: ['7xl', '7xl', '9xl'],
-            lineHeight: 'shorter',
+            fontSize: ['6xl', '6xl', '8xl'],
+            lineHeight: 'normal',
             fontWeight: 'normal',
             textTransform: 'uppercase'
         }
@@ -72,7 +84,7 @@ export const textStyles = {
         description: '',
         value: {
             fontFamily: '{fonts.body}',
-            fontSize: ['sm', 'sm', 'sm'],
+            fontSize: ['md', 'md', 'md'],
             lineHeight: 'shorter',
             fontWeight: 'normal',
         }       

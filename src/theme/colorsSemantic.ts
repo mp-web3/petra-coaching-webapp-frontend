@@ -26,7 +26,7 @@ export const semanticTokens = {
         // Surface Colors - Different background contexts
         surface: {
             action: { value: '{colors.primary.default}' },
-            dark: { value: '{colors.neutralDark.dark}'},
+            dark: { value: '{colors.secondary.dark}'},
             page: { value: '{colors.springWood.100}' },
             card: {
                 red: { value: '{colors.primary.default}' },
