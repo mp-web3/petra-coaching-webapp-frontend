@@ -12,5 +12,6 @@ export { default as SubscriptionPlanSection } from './SubscriptionPlanSection'
 export { default as BenefitsSection } from './BenefitsSection'
 export { default as FeatureCard } from './FeatureCard'
 export { default as PersonalTrainingSection } from './PersonalTrainingSection'
+export { default as FAQsSection } from './FAQsSection'
 
 
