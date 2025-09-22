@@ -8,5 +8,6 @@ export { default as ReadMore } from './ReadMore'
 export { default as AppAccessSection } from './AppAccessSection'
 export { default as SubscriptionPlanCard } from './SubscriptionPlanCard'
 export { default as SubscriptionPlanCardsSlider } from './SubscriptionPlanCardsSlider'
+export { default as SubscriptionPlanSection } from './SubscriptionPlanSection'
 
 

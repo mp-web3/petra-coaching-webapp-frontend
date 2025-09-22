@@ -26,10 +26,10 @@ export default function SubscriptionPlanCard({ title, subtitle, priceLabel, ctaT
             borderRadius='lg'
             boxShadow='md'
             p={6}
-            minW={['100%', '33.3%']}
-            css={{ scrollSnapAlign: 'center' }}
+            w={{ base: '100%', md: '33.33%' }}
+            flexShrink={0}
+            css={{ scrollSnapAlign: 'start' }}
             gap={6}
-            border='2px solid black'
         >
             <VStack gap={2} w='full' align='flex-start'>
                 <Heading as='h3' textStyle='h3' color='heading.onPage'>

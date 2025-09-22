@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import { AppAccessSection, Hero, SectionWithImageAndText, TripleAccordion, Steps, SubscriptionPlanCardsSlider } from '@/components'
+import { AppAccessSection, Hero, SectionWithImageAndText, TripleAccordion, Steps, SubscriptionPlanSection } from '@/components'
 import donnaCoachingOnline from '@/assets/images/donna-coaching-online-trx.jpg'
 import giovaneDonnaClienteTipo from '@/assets/images/giovane-donna-cliente-tipo-coaching-online.jpg'
 import videoLibraryIcon from '@/assets/icons/video_library_primary.svg'
@@ -126,7 +126,9 @@ const CoachingDonna = () => {
                 mockupImageAlt='iphone displaying open app coach plus'
             />
 
-            <SubscriptionPlanCardsSlider 
+            <SubscriptionPlanSection
+                header='Scegli il piano'
+                subHeader='Trova il percorso più adatto a te'
                 plans={[
                     {
                         title: 'premium 6 settimane',
