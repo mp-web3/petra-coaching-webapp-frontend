@@ -64,7 +64,7 @@ export const semanticTokens = {
 
         // Border Colors - Different border contexts
         border: {
-            default: { value: '{colors.springWood.300}' },
+            default: { value: '{colors.neutralDark.default}' },
             subtle: { value: '{colors.springWood.200}' },
             strong: { value: '{colors.casal.400}' },
             focus: { value: '{colors.primary}' },

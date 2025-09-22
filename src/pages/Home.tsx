@@ -1,4 +1,8 @@
 import Hero from '@/components/Hero'
+import { PersonalTrainingSection } from '@/components'
+import videoLibraryIcon from '@/assets/icons/video_library_primary.svg'
+import videoCamIcon from '@/assets/icons/videocam_primary.svg'
+import starIcon from '@/assets/icons/star_border_primary.svg'
 // import BaseCard from '@/components/BaseCard'
 import { Box, Container, Heading, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react';
 import heroBackgroundHome from '@/assets/images/hero-background-home.png'
@@ -147,12 +151,47 @@ const Home = () => {
 
 
             {/* Personal Training */}
-            <TwoColumnIntro
-                heading={`personal\ntraining 1:1\nin presenza`}
-                text={'Vuoi portare il tuo percorso a un livello superiore?\n\nAffianca al coaching online delle sessioni esclusive di personal training 1:1 in presenza: un\'occasione per lavorare fianco a fianco, perfezionare tecnica, postura e consapevolezza del movimento con massima attenzione e cura.\n\nScrivimi per ricevere tutte le info e scoprire'}
-                buttonText='scrivimi ora'
-                buttonLink=''
-                reverse
+            <PersonalTrainingSection
+                heading={'PERSONAL TRAINING'}
+                highlight={'1:1 IN PRESENZA'}
+                subheading={'Vuoi portare il tuo allenamento al livello successivo?'}
+                features={[
+                    {
+                        iconSrc: videoLibraryIcon,
+                        iconAlt: 'Attenzione personalizzata',
+                        title: 'Attenzione Personalizzata',
+                        description:
+                            'Allenamenti one‑to‑one dove ogni sessione è studiata esclusivamente per te e i tuoi obiettivi specifici.',
+                        variant: 'light',
+                        align: 'center',
+                        rounded: 'lg',
+                        hasCardBorder: true,
+                    },
+                    {
+                        iconSrc: videoCamIcon,
+                        iconAlt: 'Correzione immediata',
+                        title: 'Correzione Immediata',
+                        description:
+                            'Feedback istantaneo sulla tecnica e progressioni in tempo reale per massimizzare ogni movimento.',
+                        variant: 'light',
+                        align: 'center',
+                        rounded: 'lg',
+                        hasCardBorder: true,
+                    },
+                    {
+                        iconSrc: starIcon,
+                        iconAlt: 'Risultati garantiti',
+                        title: 'Risultati Garantiti',
+                        description:
+                            "L'intensità e la personalizzazione del training 1:1 ti assicurano progressi rapidi e duraturi.",
+                        variant: 'light',
+                        align: 'center',
+                        rounded: 'lg',
+                        hasCardBorder: true,
+                    },
+                ]}
+                ctaText={'SCOPRI LE OPZIONI'}
+                ctaLink={''}
             />
 
             {/* Incontra la tua coach section */}

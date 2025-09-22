@@ -26,7 +26,7 @@ export default function FeatureCard({ iconSrc, iconAlt, title, description, vari
             p={hasCardBorder ? 6 : 0}
             borderRadius={rounded}
             border={hasCardBorder ? '1px solid' : undefined}
-            borderColor={hasCardBorder ? 'border.subtle' : undefined}
+            borderColor={hasCardBorder ? 'border.default' : undefined}
         >
             <Image src={iconSrc} alt={iconAlt} boxSize={[12, 14]} />
             <Heading as='h3' textStyle='h4'>{title}</Heading>
