@@ -1,4 +1,4 @@
-import { Accordion, Box, HStack, Icon, Text, VStack } from '@chakra-ui/react'
+import { Accordion, Box, Heading, HStack, Icon, Text, VStack } from '@chakra-ui/react'
 import { LuChevronDown } from 'react-icons/lu'
 
 type AccordionItemData = {
@@ -20,9 +20,9 @@ function TripleAccordion({ items, allowMultiple = false }: TripleAccordionProps)
                 {items.slice(0, 3).map((item, index) => (
                     <Accordion.Item key={values[index]} value={values[index]} borderTopWidth={index === 0 ? '1px' : 0} borderBottomWidth='1px' borderColor='border.default'>
                         <Accordion.ItemTrigger asChild>
-                            <Box as='button' w='full' textAlign='left' justifyContent='center' px={4} py={5} bg='secondary.dark' color='text.onDark'>
-                                <HStack justify='space-between' align='center'>
-                                    <Text textStyle='h3'>{item.title}</Text>
+                            <Box as='button' w='full' textAlign='left' px={4} py={5} bg='secondary.dark' color='text.onDark'>
+                                <HStack justify='space-between' align='center' w='full'>
+                                    <Heading textStyle='h3' textAlign='left'>{item.title}</Heading>
                                     <Accordion.ItemIndicator asChild>
                                         <Icon as={LuChevronDown} transformOrigin='center' transition='transform 0.2s' />
                                     </Accordion.ItemIndicator>
