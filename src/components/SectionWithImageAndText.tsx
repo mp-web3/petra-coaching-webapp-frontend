@@ -17,10 +17,13 @@ function SectionWithImageAndText({ heading, imageUrl, imageAlt = '', text }: Sec
                 py={[16, 20, 24]}
                 mx='auto'
                 alignItems='stretch'
-                justifyItems='flex-start'
+                justifyItems={{ base: 'flex-start', md: 'center' }}
                 w='100%'
             >
-                <VStack align={'flex-start'} gap={[4, 4, 8]}>
+                <VStack 
+                    align={{base:'flex-start'}}
+                    gap={[4, 4, 8]}
+                >
                     <Heading
                         as='h2'
                         textStyle='h2'
@@ -29,19 +32,19 @@ function SectionWithImageAndText({ heading, imageUrl, imageAlt = '', text }: Sec
                     >
                         {heading}
                     </Heading>
-                    <Image
-                        src={imageUrl}
-                        aspectRatio={['1/1']}
-                        alt={imageAlt || heading}
-                    />
+                    <Text
+                        textStyle='sm'
+                        color='text.onPage'
+                    >
+                        {text}
+                    </Text>
                 </VStack>
-
-                <Text
-                    textStyle='sm'
-                    color='text.onPage'
-                >
-                    {text}
-                </Text>
+                <Image
+                    src={imageUrl}
+                    aspectRatio={['1/1']}
+                    maxW={{md: '650px'}}
+                    alt={imageAlt || heading}
+                />
             </SimpleGrid>
         </Box>
     )

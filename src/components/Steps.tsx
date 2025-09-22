@@ -1,4 +1,4 @@
-import { Box, HStack, Heading, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, HStack, Heading, Stack, Text, VStack, SimpleGrid } from '@chakra-ui/react'
 
 interface StepItem {
     number: number
@@ -59,11 +59,11 @@ export default function Steps({ heading, items }: StepsProps) {
                     {heading}
                 </Heading>
             )}
-            <Stack position="relative" gap={10}>
+            <SimpleGrid columns={{ base: 1, md: items.length >= 3 ? 3 : items.length }} gap={10} alignItems="start" w="full">
                 {items.map((item) => (
                     <Step key={item.number} {...item} />
                 ))}
-            </Stack>
+            </SimpleGrid>
         </VStack>
     )
 }
