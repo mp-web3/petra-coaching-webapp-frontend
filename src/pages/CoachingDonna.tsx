@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import { AppAccessSection, Hero, SectionWithImageAndText, TripleAccordion, Steps, SubscriptionPlanSection } from '@/components'
+import { AppAccessSection, Hero, SectionWithImageAndText, TripleAccordion, Steps, SubscriptionPlanSection, BenefitsSection } from '@/components'
 import donnaCoachingOnline from '@/assets/images/donna-coaching-online-trx.jpg'
 import giovaneDonnaClienteTipo from '@/assets/images/giovane-donna-cliente-tipo-coaching-online.jpg'
 import videoLibraryIcon from '@/assets/icons/video_library_primary.svg'
@@ -7,6 +7,9 @@ import calendarMonthIcon from '@/assets/icons/calendar_month_primary.svg'
 import editNoteIcon from '@/assets/icons/edit_note_primary.svg'
 import formatListNumberedIcon from '@/assets/icons/format_list_numbered_primary.svg'
 import coachPlusIphoneMockupImage from '@/assets/images/coachplus-iphone-mockup.png'
+import chatIcon from '@/assets/icons/chat_primary.svg'
+import videoCamIcon from '@/assets/icons/videocam_primary.svg'
+import starIcon from '@/assets/icons/star_border_primary.svg'
 
 
 
@@ -261,6 +264,19 @@ const CoachingDonna = () => {
                     },
 
                 ]}
+            />
+
+            <BenefitsSection
+                heading="Perché scegliere"
+                highlight="Premium"
+                items={[
+                    { iconSrc: chatIcon,  iconAlt: 'Comunicazione', title: 'Comunicazione Continua', description: 'Contatto diretto con me per chiarire dubbi, risolvere problemi e mantenere alta la motivazione lungo tutto il percorso' },
+                    { iconSrc: videoCamIcon, iconAlt: 'Correzioni video', title: 'Correzioni Video', description: ' Invimi i tuoi esercizi per ricevere feedback personalizzati e migliorare la tua tecnica' },
+                    { iconSrc: starIcon,  iconAlt: 'Supporto', title: 'Supporto Professionale', description: 'Percorso flessibile con guida continua, programmazione su misura e assistenza dedicata' },
+                ]}
+                showCta
+                ctaText="Inizia il tuo percorso premium"
+                onCtaClick={() => {/* navigate or open form */}}
             />
 
         </Box>
