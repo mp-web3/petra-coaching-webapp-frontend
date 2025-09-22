@@ -26,7 +26,8 @@ export default function SubscriptionPlanCard({ title, subtitle, priceLabel, ctaT
             borderRadius='lg'
             boxShadow='md'
             p={6}
-            w={{ base: '100%', md: '33.33%' }}
+            w={['100%']}
+            maxW={['100%', '500px']}
             flexShrink={0}
             css={{ scrollSnapAlign: 'start' }}
             gap={6}
@@ -36,7 +37,7 @@ export default function SubscriptionPlanCard({ title, subtitle, priceLabel, ctaT
                     {title}
                 </Heading>
                 {subtitle && (
-                    <Text color='text.muted'>{subtitle}</Text>
+                    <Text textStyle='lg' color={highlighted ? 'text.onDark' : 'text.onLight'}>{subtitle}</Text>
                 )}
             </VStack>
 
@@ -48,7 +49,7 @@ export default function SubscriptionPlanCard({ title, subtitle, priceLabel, ctaT
                 {features.map((f) => (
                     <HStack as='li' key={f.id} alignItems='flex-start' gap={3}>
                         <Image src={(f.checked ?? true) ? donePrimaryIcon : closePrimaryIcon} alt='' boxSize={5} mt={0.5} />
-                        <Text>{f.label}</Text>
+                        <Text textStyle='md' color={highlighted ? 'text.onDark' : 'text.onLight'}>{f.label}</Text>
                     </HStack>
                 ))}
             </VStack>

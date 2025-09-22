@@ -1,6 +1,6 @@
 import { Box, Heading, Text, VStack } from '@chakra-ui/react'
 import type { SubscriptionPlanCardProps } from './SubscriptionPlanCard'
-import SubscriptionPlanCardsSlider from './SubscriptionPlanCardsSlider'
+import SubscriptionPlanCardsSlider from './SubscriptionPlanCardsCarousel'
 
 interface SubscriptionPlanSectionProps {
     header: string
@@ -16,7 +16,7 @@ function SubscriptionPlanSection({ header, subHeader, plans}: SubscriptionPlanSe
             alignItems='stretch'
             justifyItems='center'
         >
-            <VStack align={'center'} gap={[4, 4, 8]} w='100%'>
+            <VStack align='center' justify='center' gap={[4, 4, 8]} w='100%'>
                 <Heading
                     as='h2'
                     textStyle='h2'
@@ -26,8 +26,10 @@ function SubscriptionPlanSection({ header, subHeader, plans}: SubscriptionPlanSe
                     {header}
                 </Heading>
                 <Text
-                    textStyle='sm'
+                    textStyle='lg'
                     color='text.onPage'
+                    alignSelf='center'
+                    textAlign='center'
                 >
                     {subHeader}
                 </Text>

@@ -28,9 +28,9 @@ const CoachingDonna = () => {
                 imageUrl={giovaneDonnaClienteTipo}
                 imageAlt='Giovane donna coaching online'
                 text={`Sogni di iniziare ad allenarti ma non sai come muovere i primi passi?
-                        Ti senti persa quando varchi la soglia della palestra? Ti alleni da tempo senza vedere i risultati che desideri?
-                        Cerchi un programma specificamente pensato per il corpo e le esigenze femminili? Vuoi spingerti oltre i tuoi limiti e scoprire di cosa sei davvero capace? Vuoi rimetterti in forma e sentirti bene con te stessa?
-                        Se ti riconosci in almeno una di queste domande, sei nel posto giusto.
+                    Ti senti persa quando varchi la soglia della palestra? Ti alleni da tempo senza vedere i risultati che desideri?
+                    Cerchi un programma specificamente pensato per il corpo e le esigenze femminili? Vuoi spingerti oltre i tuoi limiti e scoprire di cosa sei davvero capace? Vuoi rimetterti in forma e sentirti bene con te stessa?
+                    Se ti riconosci in almeno una di queste domande, sei nel posto giusto.
                         Il mio coaching è nato proprio per rispondere a questi bisogni, per offrirti la guida e il supporto che hai sempre cercato. Non importa da dove parti o quali sono i tuoi obiettivi: insieme troveremo la strada giusta per te.`}
             />
 
@@ -128,7 +128,7 @@ const CoachingDonna = () => {
 
             <SubscriptionPlanSection
                 header='Scegli il piano'
-                subHeader='Trova il percorso più adatto a te'
+                subHeader='Trova il percorso più adatto a te. Ogni piano include supporto personalizzato e accesso completo alla piattaforma.'
                 plans={[
                     {
                         title: 'premium 6 settimane',

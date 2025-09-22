@@ -32,13 +32,13 @@ export default function SubscriptionPlanCardsSlider({ plans }: SubscriptionPlanC
 
     return (
         <Box position='relative' w='full'>
-            <HStack position='absolute' top={2} left={0} right={0} px={[2,4]} justify='center' zIndex={1}>
+            <HStack position='absolute' top={2} left={0} right={0} px={[2,4]} justify='center' zIndex={1} display={{ base: 'flex', md: 'none' }}>
                 <IconButton aria-label='Previous' variant='ghost' onClick={() => page(-1)}>
                     <LuChevronLeft />
                 </IconButton>
-                <HStack gap={2}>
+                <HStack gap={2} >
                     {plans.map((_, i) => (
-                        <Box key={i} w={2} h={2} borderRadius='full' bg={i === index ? 'primary.default' : 'neutralDark.100'} />
+                        <Box key={i} w={2} h={2} borderRadius='full' bg={i === index ? 'primary.default' : 'neutralDark.default'} />
                     ))}
                 </HStack>
                 <IconButton aria-label='Next' variant='ghost' onClick={() => page(1)}>
@@ -48,20 +48,21 @@ export default function SubscriptionPlanCardsSlider({ plans }: SubscriptionPlanC
 
             <Box
                 ref={scrollerRef}
-                overflowX='auto'
+                overflowX={{ base: 'auto', md: 'hidden' }}
                 display='flex'
                 w='100%'
                 gap={4}
                 px={4}
                 pt={12}
                 pb={[2, 4]}
-                scrollSnapType='x mandatory'
+                scrollSnapType={{ base: 'x mandatory', md: 'none' }}
                 css={{
                     'scrollbar-width': 'none',
                     '&::-webkit-scrollbar': { display: 'none' },
                     scrollPaddingInline: '16px',
                     overscrollBehaviorX: 'contain',
                 }}
+                justifyContent={{ base: 'unset', md: 'center' }}
             >
                 {plans.map((p, idx) => (
                     <SubscriptionPlanCard key={`${p.title}-${idx}`} {...p} />

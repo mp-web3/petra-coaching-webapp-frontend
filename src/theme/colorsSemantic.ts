@@ -43,6 +43,7 @@ export const semanticTokens = {
             onSurfaceAction: { value: '{colors.neutralLight.default}' },
             onPrimary: { value: '{colors.neutralLight.default}' },
             onDark: { value: '{colors.neutralLight.default}' },
+            onLight: { value: '{colors.neutralDark.default}' },
             onDefaultHoverlay: { value: '{colors.neutralLight.default}' },
             primary: { value: '{colors.casal.800}' },
             secondary: { value: '{colors.casal.600}' },
