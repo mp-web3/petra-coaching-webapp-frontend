@@ -54,14 +54,14 @@ const Hero = ({
                 h='100vh'
                 display='flex'
                 alignItems='center'
-                border='1px solid green'
+                // border='1px solid green'
             >
                 <VStack 
                     align='flex-start' 
                     gap={[6, 8, 10]}
                     pr={[6, 6, 8]}
                     maxW='2xl'
-                    border='1px solid white'
+                    // border='1px solid white'
                 >
                     {/* Main Heading */}
                     <Heading 

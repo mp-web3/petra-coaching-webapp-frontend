@@ -1,5 +1,6 @@
-import { Box, Heading, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import MainButton from '@/components/MainButton'
+import FeatureCard from '@/components/FeatureCard'
 
 interface BenefitItem {
     iconSrc: string
@@ -18,7 +19,7 @@ interface PremiumBenefitsSectionProps {
     showCta?: boolean
 }
 
-export default function PremiumBenefitsSection({ heading, highlight, items, ctaText = 'inizia il tuo percorso premium', ctaLink = '#', onCtaClick, showCta = true }: PremiumBenefitsSectionProps) {
+export default function PremiumBenefitsSection({ heading, highlight, items, ctaText, ctaLink, onCtaClick, showCta = true }: PremiumBenefitsSectionProps) {
     return (
         <Box bg='secondary.dark' color='text.onDark' px={[4, 6, 8]} py={[12, 16, 20]}>
             <VStack gap={[8, 10]} align='center' textAlign='center' maxW='container.xl' mx='auto'>
@@ -28,11 +29,7 @@ export default function PremiumBenefitsSection({ heading, highlight, items, ctaT
 
                 <SimpleGrid columns={{ base: 1, md: 3 }} gap={[10, 16]} alignItems='start' w='full'>
                     {items.map((it) => (
-                        <VStack key={it.title} gap={4} align='center'>
-                            <Image src={it.iconSrc} alt={it.iconAlt} boxSize={[12, 14]} />
-                            <Heading as='h3' textStyle='h4' color='text.onDark'>{it.title}</Heading>
-                            <Text maxW={{ md: 'sm' }} color='text.onDark'>{it.description}</Text>
-                        </VStack>
+                        <FeatureCard key={it.title} iconSrc={it.iconSrc} iconAlt={it.iconAlt} title={it.title} description={it.description} variant='dark' />
                     ))}
                 </SimpleGrid>
 

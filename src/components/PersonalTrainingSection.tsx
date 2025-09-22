@@ -1,0 +1,40 @@
+import { Box, Heading, SimpleGrid, Text, VStack } from '@chakra-ui/react'
+import MainButton from '@/components/MainButton'
+import FeatureCard from '@/components/FeatureCard'
+import type { FeatureCardProps } from '@/components/FeatureCard'
+
+interface PersonalTrainingSectionProps {
+    heading: string
+    highlight: string
+    subheading: string
+    features: FeatureCardProps[]
+    ctaText: string
+    ctaLink?: string
+    onCtaClick?: () => void
+}
+
+export default function PersonalTrainingSection({ heading, highlight, subheading, features, ctaText, ctaLink, onCtaClick }: PersonalTrainingSectionProps) {
+    return (
+        <Box bg='surface.page' color='text.onPage' px={[4, 6, 8]} py={[12, 16, 20]}>
+            <VStack gap={6} maxW='container.xl' mx='auto' textAlign='center'>
+                <Heading as='h2' textStyle='h2'>
+                    {heading} <Text as='span' color='primary.default'>{highlight}</Text>
+                </Heading>
+                <Text textStyle='md' color='text.onPage'>{subheading}</Text>
+
+                <SimpleGrid columns={{ base: 1, md: 3 }} gap={[6, 8]} w='full'>
+                    {features.slice(0, 3).map((f, i) => (
+                        <FeatureCard key={`${f.title}-${i}`} {...f} />
+                    ))}
+                </SimpleGrid>
+
+                <Text textStyle='sm' color='text.onPage'>
+                    Scopri se il personal training fa per te nelle sessioni di prova disponibili nella tua zona.
+                </Text>
+                <MainButton text={ctaText} link={ctaLink} onClick={onCtaClick} />
+            </VStack>
+        </Box>
+    )
+}
+
+

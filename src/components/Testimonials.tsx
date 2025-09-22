@@ -43,7 +43,12 @@ const Testimonials = ({ items }: TestimonialsProps) => {
             ‹
           </Button>
 
-          <SimpleGrid flex='1' columns={{ base: 1, md: 3 }} gap={[6, 8, 10]} border='1px solid green'>
+          <SimpleGrid 
+            flex='1' 
+            columns={{ base: 1, md: 3 }} 
+            gap={[6, 8, 10]} 
+            //border='1px solid green'
+          >
           {visibleItems.map((t) => (
             <VStack
               key={t.id}

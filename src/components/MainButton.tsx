@@ -1,7 +1,7 @@
 import { Button, Link } from '@chakra-ui/react'
 
 interface MainButtonProps {
-    text: string
+    text?: string
     link?: string
     onClick?: () => void
     isExternal?: boolean
@@ -22,7 +22,7 @@ const MainButton = ({ text, link, onClick, isExternal }: MainButtonProps) => {
             py={4}
             borderRadius='md'
             _hover={{ bg: 'interactive.primaryHover' }}
-            alignSelf={{ base: 'center', md: 'center' }}
+            // alignSelf={{ base: 'left', md: 'center' }}
             w={{ base: 'auto', md: 'auto' }}
         >
             {text}

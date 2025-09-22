@@ -271,7 +271,7 @@ const CoachingDonna = () => {
                 highlight="Premium"
                 items={[
                     { iconSrc: chatIcon,  iconAlt: 'Comunicazione', title: 'Comunicazione Continua', description: 'Contatto diretto con me per chiarire dubbi, risolvere problemi e mantenere alta la motivazione lungo tutto il percorso' },
-                    { iconSrc: videoCamIcon, iconAlt: 'Correzioni video', title: 'Correzioni Video', description: ' Invimi i tuoi esercizi per ricevere feedback personalizzati e migliorare la tua tecnica' },
+                    { iconSrc: videoCamIcon, iconAlt: 'Correzioni video', title: 'Correzioni Video', description: ' Inviami i tuoi esercizi per ricevere feedback personalizzati e migliorare la tua tecnica' },
                     { iconSrc: starIcon,  iconAlt: 'Supporto', title: 'Supporto Professionale', description: 'Percorso flessibile con guida continua, programmazione su misura e assistenza dedicata' },
                 ]}
                 showCta

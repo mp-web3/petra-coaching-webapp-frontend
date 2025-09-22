@@ -10,5 +10,7 @@ export { default as SubscriptionPlanCard } from './SubscriptionPlanCard'
 export { default as SubscriptionPlanCardsSlider } from './SubscriptionPlanCardsCarousel'
 export { default as SubscriptionPlanSection } from './SubscriptionPlanSection'
 export { default as BenefitsSection } from './BenefitsSection'
+export { default as FeatureCard } from './FeatureCard'
+export { default as PersonalTrainingSection } from './PersonalTrainingSection'
 
 

@@ -20,7 +20,7 @@ function TwoColumnIntro({ heading, text, buttonText, buttonLink, reverse = false
         h='auto'
         display='flex'
         alignItems='center'
-        border='1px solid green'
+        // border='1px solid green'
     >
         <SimpleGrid
             columns={{ base: 1, md: 2 }} 
@@ -28,7 +28,7 @@ function TwoColumnIntro({ heading, text, buttonText, buttonLink, reverse = false
             alignItems='stretch'
             justifyItems='flex-start'
             w='100%'
-            border='1px solid orange'
+            // border='1px solid orange'
         >
             <Heading
                 as='h2'

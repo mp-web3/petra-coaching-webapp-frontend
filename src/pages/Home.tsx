@@ -1,5 +1,5 @@
 import Hero from '@/components/Hero'
-import BaseCard from '@/components/BaseCard'
+// import BaseCard from '@/components/BaseCard'
 import { Box, Container, Heading, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react';
 import heroBackgroundHome from '@/assets/images/hero-background-home.png'
 import weightsBackground from '@/assets/images/weights-background.jpg'
@@ -27,40 +27,13 @@ const Home = () => {
             
             />
 
-            <SimpleGrid 
-                columns={{ base: 1, md: 3 }} 
-                py={[16, 20, 24]}
-                gap={[4, 6, 8]}
-                mx='auto'
-                alignItems='stretch'
-                justifyItems='center'
-                w='100%'
-            >
-                <BaseCard
-                    heading='coaching donna'
-                    description='Percorsi personalizzati dedicati alle donne che vogliono essere guidate e sostenute nella trasformazione del proprio corpo.'
-                    link=''
-                    backgroundColor='surface.card.red'
-                    headingColor='text.onPrimary'
-                    descriptionColor='text.onPrimary'
-                />
-                <BaseCard
-                    heading='coaching uomo'
-                    description='Programmi su misura per massa, forza e prestazioni, con analisi tecnica approfondita e supporto dedicato per raggiungere i tuoi obiettivi.'
-                    link=''
-                    backgroundColor='surface.card.dark'
-                    headingColor='text.onDark'
-                    descriptionColor='text.onDark'
-                />
-                <BaseCard
-                    heading='coaching in persona'
-                    description='Programmi su misura per massa, forza e prestazioni, con analisi tecnica approfondita e supporto dedicato per raggiungere i tuoi obiettivi.'
-                    link=''
-                    backgroundColor='surface.card.light'
-                    headingColor='text.onDark'
-                    descriptionColor='text.onDark'
-                />
-            </SimpleGrid>
+            {/* Coaching Online */}
+            <TwoColumnIntro
+                heading={`coaching\nonline`}
+                text={`Il nostro percorso di coaching online inizia qui. Propongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell'esecuzione degli esercizi.`}
+                buttonText='scopri di più'
+                buttonLink=''
+            />
             {/* IL METODO */}
             <Box minH={'auto'} position={'relative'}>
             {/* Background Image */}
@@ -98,7 +71,6 @@ const Home = () => {
                     h='auto'
                     display='flex'
                     alignItems='center'
-                    border='1px solid green'
                 >
 
                     <SimpleGrid
@@ -108,7 +80,6 @@ const Home = () => {
                         alignItems='stretch'
                         justifyItems='flex-start'
                         w='100%'
-                        border='1px solid white'
                     >
                         <VStack align={'flex-start'} gap={[4, 4, 8]}>
                             <Heading
@@ -138,14 +109,42 @@ const Home = () => {
                     </SimpleGrid>
                 </Container>
             </Box>
+            {/* Cards */}
+            {/* <SimpleGrid 
+                columns={{ base: 1, md: 3 }} 
+                py={[16, 20, 24]}
+                gap={[4, 6, 8]}
+                mx='auto'
+                alignItems='stretch'
+                justifyItems='center'
+                w='100%'
+            >
+                <BaseCard
+                    heading='coaching donna'
+                    description='Percorsi personalizzati dedicati alle donne che vogliono essere guidate e sostenute nella trasformazione del proprio corpo.'
+                    link=''
+                    backgroundColor='surface.card.red'
+                    headingColor='text.onPrimary'
+                    descriptionColor='text.onPrimary'
+                />
+                <BaseCard
+                    heading='coaching uomo'
+                    description='Programmi su misura per massa, forza e prestazioni, con analisi tecnica approfondita e supporto dedicato per raggiungere i tuoi obiettivi.'
+                    link=''
+                    backgroundColor='surface.card.dark'
+                    headingColor='text.onDark'
+                    descriptionColor='text.onDark'
+                />
+                <BaseCard
+                    heading='coaching in persona'
+                    description='Programmi su misura per massa, forza e prestazioni, con analisi tecnica approfondita e supporto dedicato per raggiungere i tuoi obiettivi.'
+                    link=''
+                    backgroundColor='surface.card.light'
+                    headingColor='text.onDark'
+                    descriptionColor='text.onDark'
+                />
+            </SimpleGrid> */}
 
-            {/* Coaching Online */}
-            <TwoColumnIntro
-                heading={`coaching\nonline`}
-                text={`Il nostro percorso di coaching online inizia qui. Propongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell'esecuzione degli esercizi.`}
-                buttonText='scopri di più'
-                buttonLink=''
-            />
 
             {/* Personal Training */}
             <TwoColumnIntro
@@ -195,7 +194,6 @@ const Home = () => {
                     display='flex'
                     alignItems='center'
                     flexDirection='column'
-                    border='1px solid green'
                 >
                     <Heading
                         as='h4'
@@ -213,7 +211,6 @@ const Home = () => {
                         alignItems='stretch'
                         justifyItems={['center', 'flex-start']}
                         w='100%'
-                        border='1px solid white'
                     >
                         <VStack align={['center', 'flex-start']} justifySelf='left' gap={[4, 4, 8]}>
                             <Heading
