@@ -5,6 +5,7 @@ import videoCamIcon from '@/assets/icons/videocam_primary.svg'
 import starIcon from '@/assets/icons/star_border_primary.svg'
 // import BaseCard from '@/components/BaseCard'
 import { Box, Container, Heading, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react';
+import { useRef } from 'react'
 import heroBackgroundHome from '@/assets/images/hero-background-home.png'
 import weightsBackground from '@/assets/images/weights-background.jpg'
 import fitnessStrengthPerformanceNatalieCollars from '@/assets/images/fitness-strength-performance-natalie-collars-light-background.jpg'
@@ -19,14 +20,20 @@ import avatarMan1 from '@/assets/images/placeholders/avatar-user-testimonial-man
 import avatarMan2 from '@/assets/images/placeholders/avatar-user-testimonial-man-2.webp'
 
 const Home = () => {
+    const coachingGridRef = useRef<HTMLDivElement | null>(null)
+
+    const scrollToCoachingGrid = () => {
+        coachingGridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+
     return (
         <Box>
             <Hero 
                 backgroundImage={heroBackgroundHome}
                 titleLine1='coaching online'
                 titleLine2='personalizzato'
-                buttonText='scopri i piani'
-                buttonLink=''
+                buttonText='scopri di più'
+                buttonOnClick={scrollToCoachingGrid}
                 objectionReducingInfoText='Scopri i miei metodi provati di coaching online personalizzato per uomo e donna'
             
             />
@@ -38,20 +45,21 @@ const Home = () => {
                 justifyItems='flex-start'
                 w='100%'
                 h='vh'
+                ref={coachingGridRef}
             >
                 {/* Coaching Online Donna*/}
                 <TwoColumnIntro
                     heading={`coaching online donna`}
                     text={`Il nostro percorso di coaching online inizia qui. Propongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell'esecuzione degli esercizi.`}
-                    buttonText='scopri di più'
-                    buttonLink=''
+                    buttonText='esplora i piani donna'
+                    buttonLink='/coaching-donna-online#piani'
                 />
 
                 {/* Coaching Online Uomo*/}
                 <TwoColumnIntro
                     heading={`coaching online uomo`}
                     text={`Il nostro percorso di coaching online inizia qui. Propongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell'esecuzione degli esercizi.`}
-                    buttonText='scopri di più'
+                    buttonText='esplora i piani uomo'
                     buttonLink=''
                     variant='dark'
                 />
@@ -210,7 +218,7 @@ const Home = () => {
                         hasCardBorder: true,
                     },
                 ]}
-                ctaText={'SCOPRI LE OPZIONI'}
+                ctaText={'vai al form'}
                 ctaLink={''}
             />
 

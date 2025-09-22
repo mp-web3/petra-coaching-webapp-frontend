@@ -20,7 +20,7 @@ export default function PersonalTrainingSection({ heading, highlight, subheading
                 <Heading as='h2' textStyle='h2'>
                     {heading} <Text as='span' color='primary.default'>{highlight}</Text>
                 </Heading>
-                <Text textStyle='md' color='text.onPage'>{subheading}</Text>
+                <Text textStyle='subHeader' color='text.muted'>{subheading}</Text>
 
                 <SimpleGrid columns={{ base: 1, md: 3 }} gap={[6, 8]} w='full'>
                     {features.slice(0, 3).map((f, i) => (
@@ -29,7 +29,7 @@ export default function PersonalTrainingSection({ heading, highlight, subheading
                 </SimpleGrid>
 
                 <Text textStyle='sm' color='text.onPage'>
-                    Scopri se il personal training fa per te nelle sessioni di prova disponibili nella tua zona.
+                    Contattami per verificare che ci siano i requisiti minimi per organizzare la tua prima sessione di personal training assieme a me.
                 </Text>
                 <MainButton text={ctaText} link={ctaLink} onClick={onCtaClick} />
             </VStack>

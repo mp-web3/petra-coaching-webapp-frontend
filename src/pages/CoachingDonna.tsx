@@ -1,4 +1,6 @@
 import { Box } from '@chakra-ui/react';
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { AppAccessSection, Hero, SectionWithImageAndText, TripleAccordion, Steps, SubscriptionPlanSection, BenefitsSection, FAQsSection } from '@/components'
 import donnaCoachingOnline from '@/assets/images/donna-coaching-online-trx.jpg'
 import giovaneDonnaClienteTipo from '@/assets/images/giovane-donna-cliente-tipo-coaching-online.jpg'
@@ -14,6 +16,21 @@ import starIcon from '@/assets/icons/star_border_primary.svg'
 
 
 const CoachingDonna = () => {
+    const location = useLocation()
+
+    useEffect(() => {
+        if (location.hash) {
+            const id = location.hash.replace('#', '')
+            const el = document.getElementById(id)
+            if (el) {
+                // use timeout to ensure layout is ready
+                setTimeout(() => {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }, 0)
+            }
+        }
+    }, [location.hash])
+
     return (
         <Box>
             <Hero 
@@ -128,7 +145,8 @@ const CoachingDonna = () => {
                 mockupImageSrc={coachPlusIphoneMockupImage}
                 mockupImageAlt='iphone displaying open app coach plus'
             />
-
+             {/* Premium Plans Donna */}
+            <Box id='piani'>
             <SubscriptionPlanSection
                 header='Scegli il piano'
                 subHeader='Trova il percorso più adatto a te. Ogni piano include supporto personalizzato e accesso completo alla piattaforma.'
@@ -265,6 +283,7 @@ const CoachingDonna = () => {
 
                 ]}
             />
+            </Box>
 
             <BenefitsSection
                 heading="Perché scegliere"
