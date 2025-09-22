@@ -161,7 +161,7 @@ const Home = () => {
                         iconAlt: 'Attenzione personalizzata',
                         title: 'Attenzione Personalizzata',
                         description:
-                            'Allenamenti one‑to‑one dove ogni sessione è studiata esclusivamente per te e i tuoi obiettivi specifici.',
+                            'Allenamenti one\‑to\‑one dove ogni sessione è studiata esclusivamente per te e i tuoi obiettivi specifici.',
                         variant: 'light',
                         align: 'center',
                         rounded: 'lg',

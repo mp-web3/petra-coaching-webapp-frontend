@@ -1,4 +1,6 @@
-import { Box, Heading, Text, VStack, Accordion } from '@chakra-ui/react'
+import { Box, Heading, Text, VStack, Accordion, HStack, Icon, Image } from '@chakra-ui/react'
+import { LuChevronDown } from 'react-icons/lu'
+import questionMarkIcon from '@/assets/icons/question_mark_primary.svg'
 
 export interface FAQItem {
     q: string
@@ -15,12 +17,22 @@ interface FAQsSectionProps {
 export default function FAQsSection({ heading, highlight, subheading, items }: FAQsSectionProps) {
     return (
         <Box bg='surface.page' color='text.onPage' px={[4, 6, 8]} py={[16, 20, 24]}>
+
             <VStack gap={6} maxW='container.xl' mx='auto' textAlign='center'>
+                <Image 
+                    src={questionMarkIcon} 
+                    alt='question mark icon' 
+                    boxSize={[12, 14]} 
+                    border='2px solid'
+                    borderColor='border.focus'
+                    borderRadius='full'
+                    bg='primary.light'
+                />
                 <Heading as='h2' textStyle='h2'>
                     {heading} <Text as='span' color='primary.default'>{highlight}</Text>
                 </Heading>
                 {subheading && (
-                    <Text textStyle='md' color='text.onPage'>{subheading}</Text>
+                    <Text textStyle='subHeader' color='text.muted'>{subheading}</Text>
                 )}
 
                 <Accordion.Root collapsible>
@@ -28,7 +40,12 @@ export default function FAQsSection({ heading, highlight, subheading, items }: F
                         <Accordion.Item key={i} value={`item-${i}`} bg='neutralLight.default' borderRadius='md' mb={4} border='1px solid' borderColor='border.subtle'>
                             <Accordion.ItemTrigger asChild>
                                 <Box as='button' w='full' textAlign='left' px={6} py={4} _hover={{ bg: 'neutralLight.light' }} borderRadius='md'>
-                                    <Text fontWeight='semibold'>{f.q}</Text>
+                                    <HStack justify='space-between' align='center' w='full'>
+                                        <Text fontWeight='semibold'>{f.q}</Text>
+                                        <Accordion.ItemIndicator asChild>
+                                            <Icon as={LuChevronDown} transformOrigin='center' transition='transform 0.2s' />
+                                        </Accordion.ItemIndicator>
+                                    </HStack>
                                 </Box>
                             </Accordion.ItemTrigger>
                             <Accordion.ItemContent>

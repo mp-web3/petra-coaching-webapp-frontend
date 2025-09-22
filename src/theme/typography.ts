@@ -7,6 +7,7 @@ export const typography = {
         h2: { value: 'Heliuk Pliable, system-ui, sans-serif' },
         h3: { value: 'Heliuk Pliable, system-ui, sans-serif' },
         h4: { value: 'Inter, system-ui, sans-serif' },
+        subHeader: { value: 'Inter, system-ui, sans-serif'},
         body: { value: 'Inter, system-ui, sans-serif' },
         button: { value: 'Inter, system-ui, sans-serif' }
     },

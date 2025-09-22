@@ -26,8 +26,8 @@ function SubscriptionPlanSection({ header, subHeader, plans}: SubscriptionPlanSe
                     {header}
                 </Heading>
                 <Text
-                    textStyle='lg'
-                    color='text.onPage'
+                    textStyle='subHeader'
+                    color='text.muted'
                     alignSelf='center'
                     textAlign='center'
                 >

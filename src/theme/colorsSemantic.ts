@@ -47,7 +47,7 @@ export const semanticTokens = {
             onDefaultHoverlay: { value: '{colors.neutralLight.default}' },
             primary: { value: '{colors.casal.800}' },
             secondary: { value: '{colors.casal.600}' },
-            muted: { value: '{colors.casal.500}' },
+            muted: { value: '{colors.codGray.400}' },
             inverse: { value: '{colors.white}' },
             link: { value: '{colors.primary}' },
             linkHover: { value: '{colors.flame.600}' },
@@ -65,9 +65,9 @@ export const semanticTokens = {
         // Border Colors - Different border contexts
         border: {
             default: { value: '{colors.neutralDark.default}' },
-            subtle: { value: '{colors.springWood.200}' },
+            subtle: { value: '{colors.neutralDark.light}' },
             strong: { value: '{colors.casal.400}' },
-            focus: { value: '{colors.primary}' },
+            focus: { value: '{colors.primary.default}' },
         },
 
         // Interactive Colors - Button and interactive states
@@ -89,5 +89,6 @@ export const semanticTokens = {
             error: { value: '{colors.primary}' },
             errorLight: { value: '{colors.primaryLight}' },
         }
+
     }
 }

@@ -45,6 +45,18 @@ export const textStyles = {
         }
     },
     
+    subHeader: {
+        description: '',
+        value: {
+            fontFamily: '{fonts.subHeader}',
+            fontSize: ['xl', '2xl', '2xl'],
+            lineHeight: 'shorter',
+            fontWeight: 'light',
+            textTransform: 'none'
+        }
+
+    },
+    
     button: {
         description: '',
         value: {
