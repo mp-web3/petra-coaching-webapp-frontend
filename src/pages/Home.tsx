@@ -34,7 +34,7 @@ const Home = () => {
                 titleLine2='personalizzato'
                 buttonText='scopri di più'
                 buttonOnClick={scrollToCoachingGrid}
-                objectionReducingInfoText='Scopri i miei metodi provati di coaching online personalizzato per uomo e donna'
+                objectionReducingInfoText='Scopri i miei percorsi di coaching online personalizzati per uomo e donna'
             
             />
 
@@ -141,42 +141,6 @@ const Home = () => {
                     </SimpleGrid>
                 </Container>
             </Box>
-            {/* Cards */}
-            {/* <SimpleGrid 
-                columns={{ base: 1, md: 3 }} 
-                py={[16, 20, 24]}
-                gap={[4, 6, 8]}
-                mx='auto'
-                alignItems='stretch'
-                justifyItems='center'
-                w='100%'
-            >
-                <BaseCard
-                    heading='coaching donna'
-                    description='Percorsi personalizzati dedicati alle donne che vogliono essere guidate e sostenute nella trasformazione del proprio corpo.'
-                    link=''
-                    backgroundColor='surface.card.red'
-                    headingColor='text.onPrimary'
-                    descriptionColor='text.onPrimary'
-                />
-                <BaseCard
-                    heading='coaching uomo'
-                    description='Programmi su misura per massa, forza e prestazioni, con analisi tecnica approfondita e supporto dedicato per raggiungere i tuoi obiettivi.'
-                    link=''
-                    backgroundColor='surface.card.dark'
-                    headingColor='text.onDark'
-                    descriptionColor='text.onDark'
-                />
-                <BaseCard
-                    heading='coaching in persona'
-                    description='Programmi su misura per massa, forza e prestazioni, con analisi tecnica approfondita e supporto dedicato per raggiungere i tuoi obiettivi.'
-                    link=''
-                    backgroundColor='surface.card.light'
-                    headingColor='text.onDark'
-                    descriptionColor='text.onDark'
-                />
-            </SimpleGrid> */}
-
 
             {/* Personal Training */}
             <PersonalTrainingSection
