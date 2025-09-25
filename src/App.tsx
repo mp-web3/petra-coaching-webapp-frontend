@@ -4,6 +4,7 @@ import CoachingDonna from './pages/CoachingDonna'
 import About from './pages/About'
 import Navigation from './components/Navigation'
 import Layout from './components/Layout'
+import PreviewOrder from './pages/PreviewOrder'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/coaching-donna-online" element={<CoachingDonna />} />
           <Route path="/about" element={<About />} />
+          <Route path="/checkout/preview" element={<PreviewOrder />} />
         </Routes>
       </Layout>
     </Router>

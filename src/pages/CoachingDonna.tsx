@@ -12,6 +12,7 @@ import coachPlusIphoneMockupImage from '@/assets/images/coachplus-iphone-mockup.
 import chatIcon from '@/assets/icons/chat_primary.svg'
 import videoCamIcon from '@/assets/icons/videocam_primary.svg'
 import starIcon from '@/assets/icons/star_border_primary.svg'
+import { plansWomanPremium, toPreviewHref } from '@/lib/plans';
 
 
 
@@ -150,138 +151,16 @@ const CoachingDonna = () => {
                 <SubscriptionPlanSection
                     header='Scegli il piano'
                     subHeader='Trova il percorso più adatto a te. Ogni piano include supporto personalizzato e accesso completo alla piattaforma.'
-                    plans={[
-                        {
-                            title: 'premium 6 settimane',
-                            subtitle: '6 settimane (+ di 1 mese)',
-                            priceLabel: '€150',
-                            ctaText: 'scegli',
-                            features: [
-                                {
-                                    id: '1',
-                                    label: '1 consulenza video iniziale'
-                                },
-                                {
-                                    id: '2',
-                                    label: '1 Piano di allenamento personalizzato'
-                                },
-                                {
-                                    id: '3',
-                                    label: '5 Consulenze video di monitoraggio'
-                                },
-                                {
-                                    id: '4',
-                                    label: 'Programmazione obiettivi quadrimestrale'
-                                },
-                                {
-                                    id: '5',
-                                    label: 'Accesso all\'app con il tuo piano personalizzato'
-                                },
-                                {
-                                    id: '6',
-                                    label: 'Video tutorial esercizi'
-                                },
-                                {
-                                    id: '7',
-                                    label: 'Supporto e assistenza costante via WhatsApp',
-                                    checked: false
-                                },
-                                {
-                                    id: '8',
-                                    label: 'Correzione video-esecuzioni esercizi',
-                                    checked: false
-                                },
-                            
-                            ],
-                        
-                        },
-                        {
-                            title: 'premium 18 settimane',
-                            subtitle: '18 settimane (+ di 4 mesi)',
-                            priceLabel: '€405',
-                            ctaText: 'scegli',
-                            features: [
-                                {
-                                    id: '1',
-                                    label: '1 consulenza video iniziale'
-                                },
-                                {
-                                    id: '2',
-                                    label: '6 Piani di allenamento personalizzato'
-                                },
-                                {
-                                    id: '3',
-                                    label: '5 Consulenze video di monitoraggio'
-                                },
-                                {
-                                    id: '4',
-                                    label: 'Programmazione obiettivi quadrimestrale'
-                                },
-                                {
-                                    id: '5',
-                                    label: 'Accesso all\'app con il tuo piano personalizzato'
-                                },
-                                {
-                                    id: '6',
-                                    label: 'Video tutorial esercizi'
-                                },
-                                {
-                                    id: '7',
-                                    label: 'Supporto e assistenza costante via WhatsApp | PRIORITARIA'
-                                },
-                                {
-                                    id: '8',
-                                    label: 'Correzione video-esecuzioni esercizi | PRIORITARIA'
-                                },
-                            
-                            ],
-                            highlighted: true
-                        
-                        },
-                        {
-                            title: 'premium 36 settimane',
-                            subtitle: '36 settimane (+ di 8 mesi)',
-                            priceLabel: '€750',
-                            ctaText: 'scegli',
-                            features: [
-                                {
-                                    id: '1',
-                                    label: '1 consulenza video iniziale'
-                                },
-                                {
-                                    id: '2',
-                                    label: '6 Piani di allenamento personalizzato'
-                                },
-                                {
-                                    id: '3',
-                                    label: '5 Consulenze video di monitoraggio'
-                                },
-                                {
-                                    id: '4',
-                                    label: 'Programmazione obiettivi quadrimestrale'
-                                },
-                                {
-                                    id: '5',
-                                    label: 'Accesso all\'app con il tuo piano personalizzato'
-                                },
-                                {
-                                    id: '6',
-                                    label: 'Video tutorial esercizi'
-                                },
-                                {
-                                    id: '7',
-                                    label: 'Supporto e assistenza costante via WhatsApp | PRIORITARIA'
-                                },
-                                {
-                                    id: '8',
-                                    label: 'Correzione video-esecuzioni esercizi | PRIORITARIA'
-                                },
-                            
-                            ],
-                        
-                        },
-                    
-                    ]}
+                    plans={plansWomanPremium.map(plan => ({
+                        title: plan.title,
+                        subtitle: plan.subtitle,
+                        priceLabel: plan.priceLabel,
+                        ctaText: 'scegli',
+                        highlighted: plan.highlighted,
+                        features: plan.features,
+                        ctaHref:toPreviewHref(plan.slug),
+
+                    }))}
                 />
             </Box>
 
