@@ -1,8 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { getPlanBySlug } from '@/lib/plans';
+import { Box, Button, Container, Grid, GridItem, HStack, Heading, Stack, Text } from '@chakra-ui/react';
+import { LuCircleCheck } from 'react-icons/lu';
+import TermsScrollAccept from '@/components/TermsScrollAccept';
+import { CURRENT_TERMS_VERSION } from '@/lib/legal';
 
 const API_BASE = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001';
-const DISCLOSURE_VERSION = 'v1.0';
+const DISCLOSURE_VERSION = CURRENT_TERMS_VERSION;
 
 function uuid() {
   return crypto?.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2);
@@ -10,7 +14,7 @@ function uuid() {
 
 export default function PreviewOrder() {
   const [acceptTos, setAcceptTos] = useState(false);
-  const [acceptDisclosure, setAcceptDisclosure] = useState(false);
+  const [acceptPrivacy, setAcceptPrivacy] = useState(false);
   const [marketingOptIn, setMarketingOptIn] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -31,8 +35,8 @@ export default function PreviewOrder() {
       setError('Piano non valido.');
       return;
     }
-    if (!acceptTos || !acceptDisclosure) {
-      setError('Devi accettare i Termini di Servizio e le condizioni del programma.');
+    if (!acceptTos || !acceptPrivacy) {
+      setError('Devi accettare i Termini di Servizio e la Privacy Policy.');
       return;
     }
 
@@ -47,7 +51,7 @@ export default function PreviewOrder() {
         body: JSON.stringify({
           planId,
           acceptedTos: true,
-          acceptedDisclosure: true,
+          acceptedDisclosure: acceptPrivacy,
           marketingOptIn,
           disclosureVersion: DISCLOSURE_VERSION,
         }),
@@ -63,117 +67,161 @@ export default function PreviewOrder() {
 
   if (!plan) {
     return (
-      <main style={{ maxWidth: 720, margin: '40px auto', padding: '0 16px' }}>
-        <h1>Rivedi il tuo piano</h1>
-        <div role="alert" aria-live="assertive" tabIndex={-1}>
+      <Container maxW='container.md' px={[4,6,8]} py={[24,28,32]}>
+        <Heading as='h1' textStyle='h2'>Rivedi il tuo piano</Heading>
+        <Box role="alert" aria-live="assertive" tabIndex={-1} mt={4}>
           Piano non valido. Torna ai piani e selezionane uno.
-        </div>
-        <p style={{ marginTop: 16 }}>
+        </Box>
+        <Button variant='plain' mt={4} asChild>
           <a href="/coaching-donna-online#piani">Torna ai piani</a>
-        </p>
-      </main>
+        </Button>
+      </Container>
     );
   }
 
   return (
-    <main style={{ maxWidth: 820, margin: '40px auto', padding: '0 16px' }}>
-      <h1>Rivedi il tuo piano</h1>
+    <Container maxW='container.xl' px={[4,6,8]} py={[24,28,32]}>
+      <Heading as='h1' textStyle='h2'>Rivedi il tuo piano</Heading>
 
-      <section aria-labelledby="summary-h">
-        <h2 id="summary-h" style={{ marginTop: 16 }}>Riepilogo</h2>
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <caption className="sr-only">Dettagli del piano selezionato</caption>
-          <tbody>
-            <tr>
-              <th scope="row" style={{ textAlign: 'left', padding: '8px 0' }}>Piano</th>
-              <td style={{ padding: '8px 0' }}>{plan.title}</td>
-            </tr>
-            <tr>
-              <th scope="row" style={{ textAlign: 'left', padding: '8px 0' }}>Durata</th>
-              <td style={{ padding: '8px 0' }}>{plan.subtitle}</td>
-            </tr>
-            <tr>
-              <th scope="row" style={{ textAlign: 'left', padding: '8px 0' }}>Prezzo</th>
-              <td style={{ padding: '8px 0' }}>{plan.priceLabel}</td>
-            </tr>
-            <tr>
-              <th scope="row" style={{ textAlign: 'left', padding: '8px 0' }}>Note</th>
-              <td style={{ padding: '8px 0' }}>Il totale finale e le tasse applicabili saranno mostrati su Stripe.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+      <Grid templateColumns={{ base: '1fr', md: '2fr 1fr' }} gap={8} mt={6}>
+        <GridItem>
+          <Stack gap={6}>
+            <Box borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated'>
+              <Heading as='h2' size='lg' id='summary-h'>Riepilogo del piano</Heading>
+              <Box as='table' mt={4} w='full' borderCollapse='collapse'>
+                <Box as='tbody'>
+                  <Box as='tr'>
+                    <Box as='th' textAlign='left' py={2}>Nome piano</Box>
+                    <Box as='td' py={2}>{plan.title}</Box>
+                  </Box>
+                  <Box as='tr'>
+                    <Box as='th' textAlign='left' py={2}>Durata</Box>
+                    <Box as='td' py={2}>{plan.subtitle}</Box>
+                  </Box>
+                  <Box as='tr'>
+                    <Box as='th' textAlign='left' py={2}>Prezzo</Box>
+                    <Box as='td' py={2}>{plan.priceLabel}</Box>
+                  </Box>
+                  <Box as='tr'>
+                    <Box as='th' textAlign='left' py={2}>IVA/Note</Box>
+                    <Box as='td' py={2}>Il totale finale sarà mostrato nella pagina di pagamento</Box>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
 
-      <section aria-labelledby="includes-h" style={{ marginTop: 16 }}>
-        <h2 id="includes-h">Cosa è incluso</h2>
-        <ul>
-          {plan.features.map((f) => (
-            <li key={f.id}>{f.label}</li>
-          ))}
-        </ul>
-      </section>
+            <Box borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated'>
+              <Heading as='h2' size='lg' id='includes-h'>Cosa è incluso</Heading>
+              <Box as='ul' mt={4} css={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                {plan.features.map((f) => (
+                  <Box as='li' key={f.id} display='flex' alignItems='flex-start' gap={2} py={1}>
+                    <Box as={LuCircleCheck} color='primary' aria-hidden='true' />
+                    <Text>{f.label}</Text>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
 
-      <form onSubmit={onSubmit} aria-busy={loading} style={{ marginTop: 24 }}>
+            <Box display={{ base: 'block', md: 'none' }}>
+              <Consents
+                acceptTos={acceptTos}
+                setAcceptTos={setAcceptTos}
+                acceptPrivacy={acceptPrivacy}
+                setAcceptPrivacy={setAcceptPrivacy}
+                marketingOptIn={marketingOptIn}
+                setMarketingOptIn={setMarketingOptIn}
+              />
+            </Box>
+          </Stack>
+        </GridItem>
+
+        <GridItem display={{ base: 'none', md: 'block' }}>
+          <Consents
+            acceptTos={acceptTos}
+            setAcceptTos={setAcceptTos}
+            acceptPrivacy={acceptPrivacy}
+            setAcceptPrivacy={setAcceptPrivacy}
+            marketingOptIn={marketingOptIn}
+            setMarketingOptIn={setMarketingOptIn}
+          />
+        </GridItem>
+      </Grid>
+
+      <Box as='form' onSubmit={onSubmit} aria-busy={loading} mt={6}>
         {error && (
-          <div
+          <Box
             role="alert"
             tabIndex={-1}
             ref={errorRef}
-            style={{ padding: 12, border: '1px solid #f00', background: '#ffe6e6', marginBottom: 12 }}
+            p={3}
+            borderWidth='1px'
+            borderColor='status.error'
+            bg='status.errorLight'
+            mb={3}
           >
             {error}
-          </div>
+          </Box>
         )}
 
-        <fieldset style={{ border: 'none', padding: 0 }}>
-          <legend className="sr-only">Consensi richiesti</legend>
-          <label style={{ display: 'flex', gap: 8, alignItems: 'start', marginBottom: 8 }}>
-            <input
-              type="checkbox"
-              checked={acceptTos}
-              onChange={(e) => setAcceptTos(e.target.checked)}
-              aria-describedby="tos-help"
-            />
-            <span>
-              Ho letto e accetto i <a href="/terms" target="_blank" rel="noreferrer">Termini di Servizio</a>.
-              <div id="tos-help" style={{ color: '#666' }}>Versione disclosure: {DISCLOSURE_VERSION}</div>
-            </span>
-          </label>
-
-          <label style={{ display: 'flex', gap: 8, alignItems: 'start', marginBottom: 8 }}>
-            <input
-              type="checkbox"
-              checked={acceptDisclosure}
-              onChange={(e) => setAcceptDisclosure(e.target.checked)}
-              aria-describedby="disc-help"
-            />
-            <span>
-              Confermo di aver letto e compreso le specifiche del programma e le politiche indicate.
-              <div id="disc-help" style={{ color: '#666' }}>Questo consenso è obbligatorio per procedere.</div>
-            </span>
-          </label>
-
-          <label style={{ display: 'flex', gap: 8, alignItems: 'start' }}>
-            <input
-              type="checkbox"
-              checked={marketingOptIn}
-              onChange={(e) => setMarketingOptIn(e.target.checked)}
-            />
-            <span>Acconsento a ricevere comunicazioni informative e promozionali (opzionale).</span>
-          </label>
-        </fieldset>
-
-        <div style={{ marginTop: 16, display: 'flex', gap: 12 }}>
-          <button
-            type="submit"
-            disabled={!acceptTos || !acceptDisclosure || loading}
-            style={{ padding: '10px 16px' }}
-          >
+        <HStack gap={3}>
+          <Button type='submit' colorPalette='primary' disabled={!acceptTos || !acceptPrivacy || loading}>
             {loading ? 'Attendere…' : 'Continua al pagamento'}
-          </button>
-          <a href="/coaching-donna#piani" style={{ alignSelf: 'center' }}>Annulla</a>
-        </div>
-      </form>
-    </main>
+          </Button>
+          <Button variant='plain' asChild>
+            <a href='/coaching-donna#piani'>Annulla</a>
+          </Button>
+        </HStack>
+      </Box>
+    </Container>
   );
+}
+
+type ConsentsProps = {
+  acceptTos: boolean;
+  setAcceptTos: (v: boolean) => void;
+  acceptPrivacy: boolean;
+  setAcceptPrivacy: (v: boolean) => void;
+  marketingOptIn: boolean;
+  setMarketingOptIn: (v: boolean) => void;
+}
+
+function Consents({ acceptTos, setAcceptTos, acceptPrivacy, setAcceptPrivacy, marketingOptIn, setMarketingOptIn }: ConsentsProps) {
+  return (
+    <Box borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated'>
+      <Heading as='h3' size='md' mb={3}>Consensi e Conferma</Heading>
+      <Stack as='fieldset' border='none' p={0} gap={3}>
+        <Box as='label' display='flex' gap={3} alignItems='flex-start'>
+          <input
+            type='checkbox'
+            checked={acceptTos}
+            onChange={(e) => setAcceptTos(e.target.checked)}
+          />
+          <span>
+            Ho letto e accetto i <TermsScrollAccept onAccept={() => setAcceptTos(true)} />
+            <Text color='text.muted'>Versione: {CURRENT_TERMS_VERSION}</Text>
+          </span>
+        </Box>
+
+        <Box as='label' display='flex' gap={3} alignItems='flex-start'>
+          <input
+            type='checkbox'
+            checked={acceptPrivacy}
+            onChange={(e) => setAcceptPrivacy(e.target.checked)}
+          />
+          <span>
+            Confermo di aver letto, compreso e accetto la <a href='/privacy-policy' target='_blank' rel='noreferrer'>Privacy Policy</a>.
+          </span>
+        </Box>
+
+        <Box as='label' display='flex' gap={3} alignItems='flex-start'>
+          <input
+            type='checkbox'
+            checked={marketingOptIn}
+            onChange={(e) => setMarketingOptIn(e.target.checked)}
+          />
+          <span>Acconsento a ricevere comunicazioni informative e promozionali (opzionale).</span>
+        </Box>
+      </Stack>
+    </Box>
+  )
 }

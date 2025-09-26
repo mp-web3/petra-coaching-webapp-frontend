@@ -7,7 +7,7 @@ function Navigation() {
   const { open, onOpen, onClose } = useDisclosure()
 
   return (
-    <Box as='header' position='fixed' top={0} left={0} right={0} zIndex={9999} bg='whiteAlpha.50'>
+    <Box as='header' position='fixed' top={0} left={0} right={0} zIndex={99} bg='whiteAlpha.50'>
       <Container maxW='container.xl' px={[4, 6, 8]} py={4}>
         <HStack justify='space-between' align='center'>
           <Image src={logo2} />

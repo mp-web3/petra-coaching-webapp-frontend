@@ -5,6 +5,8 @@ import About from './pages/About'
 import Navigation from './components/Navigation'
 import Layout from './components/Layout'
 import PreviewOrder from './pages/PreviewOrder'
+import TermsPage from './pages/Terms'
+import PrivacyPolicyPage from './pages/PrivacyPolicy'
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/coaching-donna-online" element={<CoachingDonna />} />
           <Route path="/about" element={<About />} />
           <Route path="/checkout/preview" element={<PreviewOrder />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         </Routes>
       </Layout>
     </Router>
