@@ -2,22 +2,70 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { getPlanBySlug } from '@/lib/plans';
 import { Box, Button, Container, Grid, GridItem, HStack, Heading, Stack, Text } from '@chakra-ui/react';
 import { LuCircleCheck } from 'react-icons/lu';
+import ConsentsForm from '@/components/ConsentsForm';
 import TermsScrollAccept from '@/components/TermsScrollAccept';
-import { CURRENT_TERMS_VERSION } from '@/lib/legal';
+
+// Data that the form edits
+export type ConsentsFormValues = {
+  email: string
+  acceptTos: boolean
+  acceptPrivacy: boolean
+  marketingOptIn: boolean
+}
+
+export type ConsentsFormErrors = Partial<Record<keyof ConsentsFormValues, string>>
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+export function validateField<K extends keyof ConsentsFormValues>(
+  key: K,
+  value: ConsentsFormValues[K]
+): string | undefined {
+  switch (key) {
+    case 'email':
+      if (!value) return 'Email richiesta'
+      if (typeof value === 'string' && !emailRegex.test(value)) return 'Email non valida'
+      return
+    case 'acceptTos':
+      return value ? undefined : 'Richiesto'
+    case 'acceptPrivacy':
+      return value ? undefined : 'Richiesto'
+    case 'marketingOptIn':
+      return undefined
+    default:
+      return undefined
+  }
+}
+
+export function validateForm(form: ConsentsFormValues): ConsentsFormErrors {
+  return {
+    email: validateField('email', form.email),
+    acceptTos: validateField('acceptTos', form.acceptTos),
+    acceptPrivacy: validateField('acceptPrivacy', form.acceptPrivacy)
+  }
+}
+
+export function canSubmit(form: ConsentsFormValues, loading: boolean) {
+  const errs = validateForm(form)
+  return !loading && Object.values(errs).every((e) => !e)
+}
 
 const API_BASE = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001';
-const DISCLOSURE_VERSION = CURRENT_TERMS_VERSION;
 
 function uuid() {
   return crypto?.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2);
 }
 
 export default function PreviewOrder() {
-  const [acceptTos, setAcceptTos] = useState(false);
-  const [acceptPrivacy, setAcceptPrivacy] = useState(false);
-  const [marketingOptIn, setMarketingOptIn] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [form, setForm] = useState<ConsentsFormValues>({
+    email: '',
+    acceptTos: false,
+    acceptPrivacy: false,
+    marketingOptIn: false,
+  })
+  const [errors, setErrors] = useState<ConsentsFormErrors>({})
   const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const errorRef = useRef<HTMLDivElement>(null);
 
   const search = useMemo(() => new URLSearchParams(window.location.search), []);
@@ -25,22 +73,26 @@ export default function PreviewOrder() {
   const plan = getPlanBySlug(planId);
 
   useEffect(() => {
-    if (error) errorRef.current?.focus();
-  }, [error]);
+    if (submitError) errorRef.current?.focus();
+  }, [submitError]);
+
+  function handleFormChange(patch: Partial<ConsentsFormValues>) {
+    setForm(prev => ({ ...prev, ...patch }))
+    const [k, v] = Object.entries(patch)[0] as [keyof ConsentsFormValues, any]
+    setErrors(prev => ({ ...prev, [k]: validateField(k, v) }))
+  }
 
   async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError(null);
-    if (!plan) {
-      setError('Piano non valido.');
-      return;
-    }
-    if (!acceptTos || !acceptPrivacy) {
-      setError('Devi accettare i Termini di Servizio e la Privacy Policy.');
-      return;
+    e.preventDefault()
+    setSubmitError(null)
+
+    const nextErrors = validateForm(form)
+    if (Object.values(nextErrors).some(Boolean)) {
+      setErrors(nextErrors)
+      return
     }
 
-    setLoading(true);
+    setLoading(true)
     try {
       const res = await fetch(`${API_BASE}/api/checkout/sessions`, {
         method: 'POST',
@@ -51,17 +103,17 @@ export default function PreviewOrder() {
         body: JSON.stringify({
           planId,
           acceptedTos: true,
-          acceptedDisclosure: acceptPrivacy,
-          marketingOptIn,
-          disclosureVersion: DISCLOSURE_VERSION,
+          acceptedDisclosure: form.acceptPrivacy,
+          marketingOptIn: form.marketingOptIn,
+          disclosureVersion: 'v1.0',
         }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data?.url) throw new Error(data?.error || 'Errore nella creazione della sessione');
-      window.location.assign(data.url);
+      })
+      const data = await res.json()
+      if (!res.ok || !data?.url) throw new Error(data?.error || 'Errore nella creazione della sessione')
+      window.location.assign(data.url)
     } catch (err: any) {
-      setError(err.message || 'Si è verificato un errore. Riprova.');
-      setLoading(false);
+      setSubmitError(err.message || 'Si è verificato un errore. Riprova.')
+      setLoading(false)
     }
   }
 
@@ -110,7 +162,7 @@ export default function PreviewOrder() {
               </Box>
             </Box>
 
-            <Box borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated' border='1px solid green'>
+            <Box borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated'>
               <Heading as='h2' size='lg' id='includes-h'>Cosa è incluso</Heading>
               <Box as='ul' mt={4} css={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {plan.features.map((f) => (
@@ -124,18 +176,20 @@ export default function PreviewOrder() {
           </Stack>
         </GridItem>
 
-        <GridItem display={{ base: 'block', md: 'block' }} borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated' border='1px solid red'>
-          <Stack>
-            <Consents
-              acceptTos={acceptTos}
-              setAcceptTos={setAcceptTos}
-              acceptPrivacy={acceptPrivacy}
-              setAcceptPrivacy={setAcceptPrivacy}
-              marketingOptIn={marketingOptIn}
-              setMarketingOptIn={setMarketingOptIn}
-            />
-            <Box as='form' onSubmit={onSubmit} aria-busy={loading} mt={6}>
-              {error && (
+        <GridItem>
+          <Box as='form' onSubmit={onSubmit} aria-busy={loading} borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated' border='1px solid red'>
+            <Stack gap={4}>
+              <Heading as='h2' size='lg' id='includes-h'>Cosa è incluso</Heading>
+              <Text>Prima di poter continuare al pagamento devi{' '}
+                <TermsScrollAccept
+                  triggerText='cliccare qui' 
+                  onAccept{() => handleFormChange({ acceptTos: true })}
+                />
+                {' '}per leggere e accettare i Termini di Servizio
+              </Text>
+              <ConsentsForm value={form} onChange={handleFormChange} errors={errors} disabled={loading} />
+
+              {submitError && (
                 <Box
                   role="alert"
                   tabIndex={-1}
@@ -144,75 +198,24 @@ export default function PreviewOrder() {
                   borderWidth='1px'
                   borderColor='status.error'
                   bg='status.errorLight'
-                  mb={3}
                 >
-                  {error}
+                  {submitError}
                 </Box>
               )}
 
               <HStack gap={3}>
-                <Button type='submit' colorPalette='primary' disabled={!acceptTos || !acceptPrivacy || loading}>
+                <Button type='submit' colorPalette='primary' disabled={!canSubmit(form, loading)}>
                   {loading ? 'Attendere…' : 'Continua al pagamento'}
                 </Button>
                 <Button variant='plain' asChild>
                   <a href='/coaching-donna#piani'>Annulla</a>
                 </Button>
               </HStack>
-            </Box>
-          </Stack>
+            </Stack>
+          </Box>
         </GridItem>
       </Grid>
 
     </Container>
   );
-}
-
-type ConsentsProps = {
-  acceptTos: boolean;
-  setAcceptTos: (v: boolean) => void;
-  acceptPrivacy: boolean;
-  setAcceptPrivacy: (v: boolean) => void;
-  marketingOptIn: boolean;
-  setMarketingOptIn: (v: boolean) => void;
-}
-
-function Consents({ acceptTos, setAcceptTos, acceptPrivacy, setAcceptPrivacy, marketingOptIn, setMarketingOptIn }: ConsentsProps) {
-  return (
-    <Box>
-      <Heading as='h3' size='md' mb={3}>Consensi e Conferma</Heading>
-      <Stack as='fieldset' border='none' p={0} gap={3}>
-        <Box as='label' display='flex' gap={3} alignItems='flex-start'>
-          <input
-            type='checkbox'
-            checked={acceptTos}
-            onChange={(e) => setAcceptTos(e.target.checked)}
-          />
-          <span>
-            Ho letto e accetto i <TermsScrollAccept onAccept={() => setAcceptTos(true)} />
-            <Text color='text.muted'>Versione: {CURRENT_TERMS_VERSION}</Text>
-          </span>
-        </Box>
-
-        <Box as='label' display='flex' gap={3} alignItems='flex-start'>
-          <input
-            type='checkbox'
-            checked={acceptPrivacy}
-            onChange={(e) => setAcceptPrivacy(e.target.checked)}
-          />
-          <span>
-            Confermo di aver letto, compreso e accetto la <a href='/privacy-policy' target='_blank' rel='noreferrer'>Privacy Policy</a>.
-          </span>
-        </Box>
-
-        <Box as='label' display='flex' gap={3} alignItems='flex-start'>
-          <input
-            type='checkbox'
-            checked={marketingOptIn}
-            onChange={(e) => setMarketingOptIn(e.target.checked)}
-          />
-          <span>Acconsento a ricevere comunicazioni informative e promozionali (opzionale).</span>
-        </Box>
-      </Stack>
-    </Box>
-  )
 }
