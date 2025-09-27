@@ -110,7 +110,7 @@ export default function PreviewOrder() {
               </Box>
             </Box>
 
-            <Box borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated'>
+            <Box borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated' border='1px solid green'>
               <Heading as='h2' size='lg' id='includes-h'>Cosa è incluso</Heading>
               <Box as='ul' mt={4} css={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {plan.features.map((f) => (
@@ -121,57 +121,48 @@ export default function PreviewOrder() {
                 ))}
               </Box>
             </Box>
-
-            <Box display={{ base: 'block', md: 'none' }}>
-              <Consents
-                acceptTos={acceptTos}
-                setAcceptTos={setAcceptTos}
-                acceptPrivacy={acceptPrivacy}
-                setAcceptPrivacy={setAcceptPrivacy}
-                marketingOptIn={marketingOptIn}
-                setMarketingOptIn={setMarketingOptIn}
-              />
-            </Box>
           </Stack>
         </GridItem>
 
-        <GridItem display={{ base: 'none', md: 'block' }}>
-          <Consents
-            acceptTos={acceptTos}
-            setAcceptTos={setAcceptTos}
-            acceptPrivacy={acceptPrivacy}
-            setAcceptPrivacy={setAcceptPrivacy}
-            marketingOptIn={marketingOptIn}
-            setMarketingOptIn={setMarketingOptIn}
-          />
+        <GridItem display={{ base: 'block', md: 'block' }} borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated' border='1px solid red'>
+          <Stack>
+            <Consents
+              acceptTos={acceptTos}
+              setAcceptTos={setAcceptTos}
+              acceptPrivacy={acceptPrivacy}
+              setAcceptPrivacy={setAcceptPrivacy}
+              marketingOptIn={marketingOptIn}
+              setMarketingOptIn={setMarketingOptIn}
+            />
+            <Box as='form' onSubmit={onSubmit} aria-busy={loading} mt={6}>
+              {error && (
+                <Box
+                  role="alert"
+                  tabIndex={-1}
+                  ref={errorRef}
+                  p={3}
+                  borderWidth='1px'
+                  borderColor='status.error'
+                  bg='status.errorLight'
+                  mb={3}
+                >
+                  {error}
+                </Box>
+              )}
+
+              <HStack gap={3}>
+                <Button type='submit' colorPalette='primary' disabled={!acceptTos || !acceptPrivacy || loading}>
+                  {loading ? 'Attendere…' : 'Continua al pagamento'}
+                </Button>
+                <Button variant='plain' asChild>
+                  <a href='/coaching-donna#piani'>Annulla</a>
+                </Button>
+              </HStack>
+            </Box>
+          </Stack>
         </GridItem>
       </Grid>
 
-      <Box as='form' onSubmit={onSubmit} aria-busy={loading} mt={6}>
-        {error && (
-          <Box
-            role="alert"
-            tabIndex={-1}
-            ref={errorRef}
-            p={3}
-            borderWidth='1px'
-            borderColor='status.error'
-            bg='status.errorLight'
-            mb={3}
-          >
-            {error}
-          </Box>
-        )}
-
-        <HStack gap={3}>
-          <Button type='submit' colorPalette='primary' disabled={!acceptTos || !acceptPrivacy || loading}>
-            {loading ? 'Attendere…' : 'Continua al pagamento'}
-          </Button>
-          <Button variant='plain' asChild>
-            <a href='/coaching-donna#piani'>Annulla</a>
-          </Button>
-        </HStack>
-      </Box>
     </Container>
   );
 }
@@ -187,7 +178,7 @@ type ConsentsProps = {
 
 function Consents({ acceptTos, setAcceptTos, acceptPrivacy, setAcceptPrivacy, marketingOptIn, setMarketingOptIn }: ConsentsProps) {
   return (
-    <Box borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated'>
+    <Box>
       <Heading as='h3' size='md' mb={3}>Consensi e Conferma</Heading>
       <Stack as='fieldset' border='none' p={0} gap={3}>
         <Box as='label' display='flex' gap={3} alignItems='flex-start'>
