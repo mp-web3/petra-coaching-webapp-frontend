@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState, version } from 'react';
 import { getPlanBySlug } from '@/lib/plans';
 import { Box, Button, Container, Grid, GridItem, HStack, Heading, Stack, Text } from '@chakra-ui/react';
 import { LuCircleCheck } from 'react-icons/lu';
@@ -185,6 +185,11 @@ export default function PreviewOrder() {
               <Text>Prima di poter continuare al pagamento devi{' '}
                 <TermsScrollAccept
                   triggerText='cliccare qui' 
+                  checked={form.acceptTos}
+                  onChange={(next, version) => {
+                    handleFormChange({ acceptTos: next })
+                    if (next) setTermsVersion(version)
+                  }}
                   onAccept={(version) => {
                     handleFormChange({ acceptTos: true })
                     setTermsVersion(version)

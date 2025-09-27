@@ -1,25 +1,25 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Box, Button, Heading, Spinner, Text, useDisclosure, Dialog, HStack, VisuallyHidden, Checkbox } from '@chakra-ui/react'
 import { fetchLegalMarkdown, CURRENT_TERMS_VERSION } from '@/lib/legal'
 import Markdown from '@/components/Markdown'
 
 interface TermsScrollAcceptProps {
   triggerText?: string
-  onAccept: (version: string) => void
+  onAccept?: (version: string) => void
+  checked?: boolean
+  onChange?: (next: boolean, version: string) => void
 }
 
-export default function TermsScrollAccept({ triggerText = 'Termini di Servizio', onAccept }: TermsScrollAcceptProps) {
+export default function TermsScrollAccept({ triggerText = 'Termini di Servizio', onAccept, checked = false, onChange }: TermsScrollAcceptProps) {
   const { open, onOpen, onClose } = useDisclosure()
   const [content, setContent] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [loadError, setLoadError] = useState<string | null>(null)
-  const [canAccept, setCanAccept] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
 
   async function load() {
     setLoading(true)
     setLoadError(null)
-    setCanAccept(false)
     try {
       const md = await fetchLegalMarkdown('terms', CURRENT_TERMS_VERSION)
       setContent(md)
@@ -35,29 +35,16 @@ export default function TermsScrollAccept({ triggerText = 'Termini di Servizio',
     load()
   }, [open])
 
-  const onScroll = useMemo(() => {
-    return () => {
-      const el = scrollRef.current
-      if (!el) return
-      const fits = el.scrollHeight <= el.clientHeight + 2
-      const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 4
-      if (fits || atBottom) setCanAccept(true)
-    }
-  }, [])
-
+  // Reset scroll position on open/content change for a consistent start
   useEffect(() => {
+    if (!open) return
     const el = scrollRef.current
-    if (!el) return
-    const fits = el.scrollHeight <= el.clientHeight + 2
-    if (fits) setCanAccept(true)
-
-    el.addEventListener('scroll', onScroll)
-    return () => el.removeEventListener('scroll', onScroll)
-  }, [content, onScroll])
+    if (el) el.scrollTop = 0
+  }, [open, content])
 
   return (
     <>
-      <Button variant='plain' color='text.link' onClick={onOpen}>
+      <Button variant='plain' color='text.link' onClick={onOpen} border='1px solid green'>
         {triggerText}
       </Button>
 
@@ -83,7 +70,7 @@ export default function TermsScrollAccept({ triggerText = 'Termini di Servizio',
               ) : (
                 <>
                   <VisuallyHidden>
-                    <p>Scorri fino in fondo per abilitare la conferma di accettazione.</p>
+                    <p>Scorri e leggi i termini; la conferma si trova al termine del documento.</p>
                   </VisuallyHidden>
                   <HStack justify='space-between' mb={2}>
                     <Text color='text.muted' fontSize='sm'>Scorri per leggere</Text>
@@ -105,11 +92,19 @@ export default function TermsScrollAccept({ triggerText = 'Termini di Servizio',
                     borderColor='border.subtle'
                   >
                     <Markdown>{content}</Markdown>
-                  </Box>
 
-                  {canAccept && (
-                    <Box mt={3}>
-                      <Checkbox.Root onCheckedChange={(e) => { if (e.checked === true) { onAccept(CURRENT_TERMS_VERSION); onClose(); } }}>
+                    <Box mt={4} pt={3} borderTopWidth='1px' borderColor='border.subtle'>
+                      <Checkbox.Root
+                        checked={checked}
+                        onCheckedChange={(e) => {
+                          const next = e.checked === true
+                          onChange?.(next, CURRENT_TERMS_VERSION)
+                          if (next) {
+                            onAccept?.(CURRENT_TERMS_VERSION)
+                            onClose()
+                          }
+                        }}
+                      >
                         <Checkbox.Control />
                         <Checkbox.Label>
                           Confermo di aver letto, di aver compreso e di accettare i termini di servizio
@@ -117,7 +112,7 @@ export default function TermsScrollAccept({ triggerText = 'Termini di Servizio',
                         <Checkbox.HiddenInput />
                       </Checkbox.Root>
                     </Box>
-                  )}
+                  </Box>
                 </>
               )}
             </Dialog.Body>
