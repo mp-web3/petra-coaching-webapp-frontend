@@ -72,6 +72,8 @@ export default function PreviewOrder() {
   const planId = search.get('plan') || '';
   const plan = getPlanBySlug(planId);
 
+  const [termsVersion, setTermsVersion] = useState<string | null>(null)
+
   useEffect(() => {
     if (submitError) errorRef.current?.focus();
   }, [submitError]);
@@ -183,7 +185,10 @@ export default function PreviewOrder() {
               <Text>Prima di poter continuare al pagamento devi{' '}
                 <TermsScrollAccept
                   triggerText='cliccare qui' 
-                  onAccept{() => handleFormChange({ acceptTos: true })}
+                  onAccept={(version) => {
+                    handleFormChange({ acceptTos: true })
+                    setTermsVersion(version)
+                  }}
                 />
                 {' '}per leggere e accettare i Termini di Servizio
               </Text>

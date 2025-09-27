@@ -21,13 +21,19 @@ export default function ConsentsForm({ value, onChange, errors, disabled }: Cons
         <Field.Root required invalid={!!tosError}>
           <Checkbox.Root
             checked={value.acceptTos}
-            onCheckedChange={(e) => onChange({ acceptTos: e.checked === true })}
-            disabled={disabled}
+            onCheckedChange={(e) => {
+              const next = e.checked === true
+              // Allow unchecking, but do not allow checking here
+              if (!next) onChange({ acceptTos: false })
+            }}
+            aria-describedby='tos-help'
           >
             <Checkbox.Control />
             <Checkbox.Label>Accetto i Termini</Checkbox.Label>
             <Checkbox.HiddenInput />
           </Checkbox.Root>
+          <Text id='tos-help' color='text.muted' fontSize='sm'>Per attivare questo consenso, clicca il link in alto e accetta nel riquadro dedicato.</Text>
+          
           {tosError && <Field.ErrorText>{tosError}</Field.ErrorText>}
         </Field.Root>
   
