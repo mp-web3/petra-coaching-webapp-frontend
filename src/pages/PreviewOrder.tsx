@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState, version } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { getPlanBySlug } from '@/lib/plans';
 import { Box, Button, Container, Grid, GridItem, HStack, Heading, Stack, Text } from '@chakra-ui/react';
 import { LuCircleCheck } from 'react-icons/lu';

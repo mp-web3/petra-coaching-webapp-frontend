@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { AppAccessSection, Hero, SectionWithImageAndText, TripleAccordion, Steps, SubscriptionPlanSection, BenefitsSection, FAQsSection } from '@/components'
 import donnaCoachingOnline from '@/assets/images/donna-coaching-online-trx.jpg'
@@ -19,6 +19,11 @@ import { plansWomanPremium, toPreviewHref } from '@/lib/plans';
 const CoachingDonna = () => {
     const location = useLocation()
 
+    const subscriptionPlanSectionRef = useRef<HTMLDivElement | null>(null)
+
+    const scrollToSubscriptionPlanSection = () => {
+        subscriptionPlanSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
     useEffect(() => {
         if (location.hash) {
             const id = location.hash.replace('#', '')
@@ -39,9 +44,8 @@ const CoachingDonna = () => {
                 titleLine1='coaching donna'
                 titleLine2='online'
                 buttonText='inizia ora'
-                buttonLink=''
+                buttonOnClick={scrollToSubscriptionPlanSection}
                 objectionReducingInfoText='Insieme costruiamo il tuo percorso: coaching individuale e sostegno continuo da donna a donna per il cambiamento che hai sempre desiderato.'
-
             />
 
             <SectionWithImageAndText
@@ -147,7 +151,10 @@ const CoachingDonna = () => {
                 mockupImageAlt='iphone displaying open app coach plus'
             />
              {/* Premium Plans Donna */}
-            <Box id='piani'>
+            <Box 
+                id='piani' 
+                ref={subscriptionPlanSectionRef}
+            >
                 <SubscriptionPlanSection
                     header='Scegli il piano'
                     subHeader='Trova il percorso più adatto a te. Ogni piano include supporto personalizzato e accesso completo alla piattaforma.'

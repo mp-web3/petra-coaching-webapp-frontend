@@ -6,7 +6,6 @@ interface HeroProps {
     titleLine1: string
     titleLine2?: string
     buttonText: string
-    buttonLink?: string
     buttonOnClick?: () => void
     objectionReducingInfoText: string
 }
@@ -15,8 +14,7 @@ const Hero = ({
     backgroundImage, 
     titleLine1, 
     titleLine2, 
-    buttonText, 
-    buttonLink, 
+    buttonText,
     buttonOnClick,
     objectionReducingInfoText,
 }: HeroProps) => {
@@ -84,7 +82,6 @@ const Hero = ({
                     {/* Call-to-Action Button */}
                     <MainButton 
                         text={buttonText}
-                        link={buttonLink}
                         onClick={buttonOnClick}
                     />
                     
