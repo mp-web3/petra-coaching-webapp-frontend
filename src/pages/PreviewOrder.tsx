@@ -3,13 +3,12 @@ import { getPlanBySlug } from '@/lib/plans';
 import { Box, Button, Container, Grid, GridItem, HStack, Heading, Stack, Text } from '@chakra-ui/react';
 import { LuCircleCheck } from 'react-icons/lu';
 import ConsentsForm from '@/components/ConsentsForm';
-import TermsScrollAccept from '@/components/TermsScrollAccept';
+import TermsOfServiceDialog from '@/components/TermsOfServiceDialog';
 
 // Data that the form edits
 export type ConsentsFormValues = {
   email: string
   acceptTos: boolean
-  acceptPrivacy: boolean
   marketingOptIn: boolean
 }
 
@@ -28,8 +27,6 @@ export function validateField<K extends keyof ConsentsFormValues>(
       return
     case 'acceptTos':
       return value ? undefined : 'Richiesto'
-    case 'acceptPrivacy':
-      return value ? undefined : 'Richiesto'
     case 'marketingOptIn':
       return undefined
     default:
@@ -41,7 +38,6 @@ export function validateForm(form: ConsentsFormValues): ConsentsFormErrors {
   return {
     email: validateField('email', form.email),
     acceptTos: validateField('acceptTos', form.acceptTos),
-    acceptPrivacy: validateField('acceptPrivacy', form.acceptPrivacy)
   }
 }
 
@@ -60,7 +56,6 @@ export default function PreviewOrder() {
   const [form, setForm] = useState<ConsentsFormValues>({
     email: '',
     acceptTos: false,
-    acceptPrivacy: false,
     marketingOptIn: false,
   })
   const [errors, setErrors] = useState<ConsentsFormErrors>({})
@@ -105,7 +100,6 @@ export default function PreviewOrder() {
         body: JSON.stringify({
           planId,
           acceptedTos: true,
-          acceptedDisclosure: form.acceptPrivacy,
           marketingOptIn: form.marketingOptIn,
           disclosureVersion: 'v1.0',
         }),
@@ -179,26 +173,25 @@ export default function PreviewOrder() {
         </GridItem>
 
         <GridItem>
-          <Box as='form' onSubmit={onSubmit} aria-busy={loading} borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated' border='1px solid red'>
+          <Box as='form' onSubmit={onSubmit} aria-busy={loading} borderWidth='1px' borderRadius='lg' p={6} bg='surface.elevated'>
             <Stack gap={4}>
-              <Heading as='h2' size='lg' id='includes-h'>Cosa è incluso</Heading>
-              <Text>Prima di poter continuare al pagamento devi{' '}
-                <TermsScrollAccept
-                  triggerText='cliccare qui' 
-                  checked={form.acceptTos}
-                  onChange={(next, version) => {
-                    handleFormChange({ acceptTos: next })
-                    if (next) setTermsVersion(version)
-                  }}
-                  onAccept={(version) => {
-                    handleFormChange({ acceptTos: true })
-                    setTermsVersion(version)
-                  }}
+              <Heading as='h2' size='lg' id='includes-h'>Consensi e conferma</Heading>
+                <Text>
+                  Prima di poter continuare al pagamento devi leggere e accettare i termini di servizio.
+                </Text>
+                <TermsOfServiceDialog
+                    checked={form.acceptTos} 
+                    onChange={(next, version) => {
+                      handleFormChange({ acceptTos: next })
+                      if (next) setTermsVersion(version)
+                    }}
+                    onAccept={(version) => {
+                      handleFormChange({ acceptTos: true })
+                      setTermsVersion(version)
+                    }}
                 />
-                {' '}per leggere e accettare i Termini di Servizio
-              </Text>
               <ConsentsForm value={form} onChange={handleFormChange} errors={errors} disabled={loading} />
-
+              
               {submitError && (
                 <Box
                   role="alert"

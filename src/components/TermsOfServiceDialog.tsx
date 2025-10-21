@@ -1,62 +1,68 @@
+import { Box, Button, Checkbox, CloseButton, Dialog, Portal, Text, useDisclosure, HStack, VisuallyHidden, Spinner } from "@chakra-ui/react"
 import { useEffect, useRef, useState } from 'react'
-import { Box, Button, Heading, Spinner, Text, useDisclosure, Dialog, HStack, VisuallyHidden, Checkbox } from '@chakra-ui/react'
 import { fetchLegalMarkdown, CURRENT_TERMS_VERSION } from '@/lib/legal'
 import Markdown from '@/components/Markdown'
 
-interface TermsScrollAcceptProps {
-  triggerText?: string
-  onAccept?: (version: string) => void
-  checked?: boolean
-  onChange?: (next: boolean, version: string) => void
-}
+type Props = {
+    onAccept?: (version: string) => void
+    checked?: boolean
+    onChange?: (next: boolean, version: string) => void
+  }
 
-export default function TermsScrollAccept({ triggerText = 'Termini di Servizio', onAccept, checked = false, onChange }: TermsScrollAcceptProps) {
+const TermsOfServiceDialog = ({ onAccept, checked = false, onChange }: Props) => {
   const { open, onOpen, onClose } = useDisclosure()
   const [content, setContent] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [loadError, setLoadError] = useState<string | null>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  async function load() {
-    setLoading(true)
-    setLoadError(null)
-    try {
-      const md = await fetchLegalMarkdown('terms', CURRENT_TERMS_VERSION)
-      setContent(md)
-    } catch (e: any) {
-      setLoadError('Impossibile caricare i Termini di Servizio. Riprova.')
-    } finally {
-      setLoading(false)
-    }
+async function load() {
+  setLoading(true)
+  setLoadError(null)
+  try {
+    const md = await fetchLegalMarkdown('terms', CURRENT_TERMS_VERSION)
+    setContent(md)
+  } catch (e: any) {
+    setLoadError('Impossibile caricare i Termini di Servizio. Riprova.')
+  } finally {
+    setLoading(false)
   }
+}
 
-  useEffect(() => {
-    if (!open) return
-    load()
-  }, [open])
+useEffect(() => {
+  if (!open) return
+  load()
+}, [open])
 
-  // Reset scroll position on open/content change for a consistent start
-  useEffect(() => {
-    if (!open) return
-    const el = scrollRef.current
-    if (el) el.scrollTop = 0
-  }, [open, content])
+// Reset scroll position on open/content change for a consistent start
+useEffect(() => {
+  if (!open) return
+  const el = scrollRef.current
+  if (el) el.scrollTop = 0
+}, [open, content])
 
   return (
-    <>
-      <Button variant='plain' color='text.link' onClick={onOpen} border='1px solid green'>
-        {triggerText}
-      </Button>
-
-      <Dialog.Root open={open} onOpenChange={(e) => (e.open ? onOpen() : onClose())}>
+    <Dialog.Root
+      onOpenChange={(e) => (e.open ? onOpen() : onClose())}
+      size={{ mdDown: "full", md: "cover" }}
+      open={open}
+      scrollBehavior="inside" 
+    >   
+      <Dialog.Trigger asChild>
+        <Button variant="plain">
+            Apri i termini di servizio
+        </Button>
+      </Dialog.Trigger>
+      <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-          <Dialog.Content maxW='100vw' w='100vw' h='100vh'>
+          <Dialog.Content>
             <Dialog.Header>
-              <Heading as='h3' size='lg'>Termini di Servizio</Heading>
-              <Text mt={2} color='text.muted'>Versione: {CURRENT_TERMS_VERSION}</Text>
+              <Dialog.Title>Termini di servizio e trattamento dei dati</Dialog.Title>
             </Dialog.Header>
-            <Dialog.CloseTrigger />
+            <Dialog.CloseTrigger asChild>
+              <CloseButton size="sm" />
+            </Dialog.CloseTrigger>
             <Dialog.Body display='flex' flexDirection='column' h='calc(100vh - 160px)'>
               {loading ? (
                 <Box display='flex' alignItems='center' justifyContent='center' flex='1'>
@@ -116,12 +122,11 @@ export default function TermsScrollAccept({ triggerText = 'Termini di Servizio',
                 </>
               )}
             </Dialog.Body>
-            <Dialog.Footer display='flex' gap={3}>
-              <Button variant='ghost' onClick={onClose}>Chiudi</Button>
-            </Dialog.Footer>
           </Dialog.Content>
         </Dialog.Positioner>
-      </Dialog.Root>
-    </>
+      </Portal>
+    </Dialog.Root>
   )
 }
+
+export default TermsOfServiceDialog

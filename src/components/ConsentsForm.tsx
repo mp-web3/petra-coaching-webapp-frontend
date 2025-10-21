@@ -13,7 +13,6 @@ type ConsentsFormProps = {
 export default function ConsentsForm({ value, onChange, errors, disabled }: ConsentsFormProps) {
     const emailError = errors?.email
     const tosError = errors?.acceptTos
-    const privacyError = errors?.acceptPrivacy
 
     return (
       <Stack>
@@ -32,24 +31,9 @@ export default function ConsentsForm({ value, onChange, errors, disabled }: Cons
             <Checkbox.Label>Accetto i Termini</Checkbox.Label>
             <Checkbox.HiddenInput />
           </Checkbox.Root>
-          <Text id='tos-help' color='text.muted' fontSize='sm'>Per attivare questo consenso, clicca il link in alto e accetta nel riquadro dedicato.</Text>
+          <Text id='tos-help' color='text.muted' fontSize='sm'>Per attivare questo consenso, clicca "Apri i termini di servizio" e accetta nel riquadro dedicato.</Text>
           
           {tosError && <Field.ErrorText>{tosError}</Field.ErrorText>}
-        </Field.Root>
-  
-        <Field.Root required invalid={!!privacyError}>
-          <Checkbox.Root
-            checked={value.acceptPrivacy}
-            onCheckedChange={(e) => onChange({ acceptPrivacy: e.checked === true })}
-            disabled={disabled}
-          >
-            <Checkbox.Control />
-            <Checkbox.Label>
-              Accetto la Privacy
-            </Checkbox.Label>
-            <Checkbox.HiddenInput />
-          </Checkbox.Root>
-          {privacyError && <Field.ErrorText>{privacyError}</Field.ErrorText>}
         </Field.Root>
   
         <Checkbox.Root
@@ -67,7 +51,7 @@ export default function ConsentsForm({ value, onChange, errors, disabled }: Cons
                 Email
             </Field.Label>
             <Input
-                placeholder='athlete@gmail.com'
+                placeholder='petra@gmail.com'
                 type="email"
                 value={value.email}
                 onChange={(e) => onChange({ email: e.target.value })}
