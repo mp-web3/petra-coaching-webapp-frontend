@@ -1,9 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { getPlanBySlug } from '@/lib/plans';
-import { Box, Button, Container, Grid, GridItem, HStack, Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Grid, GridItem, HStack, Heading, Image, Stack, Text } from '@chakra-ui/react';
 import { LuCircleCheck } from 'react-icons/lu';
 import ConsentsForm from '@/components/ConsentsForm';
 import TermsOfServiceDialog from '@/components/TermsOfServiceDialog';
+import donePrimaryIcon from '@/assets/icons/done_primary.svg'
+import closePrimaryIcon from '@/assets/icons/close_primary.svg'
 
 // Data that the form edits
 export type ConsentsFormValues = {
@@ -102,6 +104,7 @@ export default function PreviewOrder() {
           acceptedTos: true,
           marketingOptIn: form.marketingOptIn,
           disclosureVersion: 'v1.0',
+          email: form.email
         }),
       })
       const data = await res.json()
@@ -163,7 +166,7 @@ export default function PreviewOrder() {
               <Box as='ul' mt={4} css={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {plan.features.map((f) => (
                   <Box as='li' key={f.id} display='flex' alignItems='flex-start' gap={2} py={1}>
-                    <Box as={LuCircleCheck} color='primary' aria-hidden='true' />
+                      <Image src={(f.checked ?? true) ? donePrimaryIcon : closePrimaryIcon} alt='' boxSize={5} mt={0.5} />
                     <Text>{f.label}</Text>
                   </Box>
                 ))}
