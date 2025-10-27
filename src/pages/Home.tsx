@@ -52,7 +52,7 @@ const Home = () => {
                     heading={`coaching online donna`}
                     text={`Il nostro percorso di coaching online inizia qui. Propongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell'esecuzione degli esercizi.`}
                     buttonText='esplora i piani donna'
-                    buttonLink='/coaching-donna-online#piani'
+                    buttonHref='/coaching-donna-online#piani'
                 />
 
                 {/* Coaching Online Uomo*/}
@@ -60,7 +60,7 @@ const Home = () => {
                     heading={`coaching online uomo`}
                     text={`Il nostro percorso di coaching online inizia qui. Propongo percorsi su misura, che prevedono programmazione personalizzata e feedback periodici, e percorsi che comprendono supporto continuo e completo, supervisione tecnica e ottimizzazione dell'esecuzione degli esercizi.`}
                     buttonText='esplora i piani uomo'
-                    buttonLink=''
+                    buttonHref=''
                     variant='dark'
                 />
             </SimpleGrid>
@@ -183,7 +183,7 @@ const Home = () => {
                     },
                 ]}
                 ctaText={'vai al form'}
-                ctaLink={''}
+                ctaHref={''}
             />
 
             {/* Incontra la tua coach section */}

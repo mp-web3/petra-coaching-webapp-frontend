@@ -9,17 +9,17 @@ interface BenefitItem {
     description: string
 }
 
-interface PremiumBenefitsSectionProps {
+interface BenefitsSectionProps {
     heading: string
     highlight: string
     items: BenefitItem[]
     ctaText?: string
-    ctaLink?: string
+    ctaHref?: string
     onCtaClick?: () => void
     showCta?: boolean
 }
 
-export default function PremiumBenefitsSection({ heading, highlight, items, ctaText, ctaLink, onCtaClick, showCta = true }: PremiumBenefitsSectionProps) {
+export default function BenefitsSection({ heading, highlight, items, ctaText, ctaHref, onCtaClick, showCta = true }: BenefitsSectionProps) {
     return (
         <Box bg='surface.dark' color='text.onDark' px={[4, 6, 8]} py={[12, 16, 20]}>
             <VStack gap={[8, 10]} align='center' textAlign='center' maxW='container.xl' mx='auto'>
@@ -34,7 +34,7 @@ export default function PremiumBenefitsSection({ heading, highlight, items, ctaT
                 </SimpleGrid>
 
                 {showCta && (
-                    <MainButton text={ctaText} link={ctaLink} onClick={onCtaClick} />
+                    <MainButton text={ctaText} href={ctaHref} onClick={onCtaClick} />
                 )}
             </VStack>
         </Box>

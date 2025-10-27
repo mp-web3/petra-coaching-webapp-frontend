@@ -19,9 +19,10 @@ const BaseCard = ({ heading, description, link, backgroundColor, headingColor, d
             bg={backgroundColor}
             px={[4, 6, 8]}
             w='100%'
-            border='1px solid yellow'
             borderRadius='4px'
             maxW={['375px', '600px']}
+            transition='transform 0.2s'
+            _hover={{ transform: 'scale(1.02)' }}
             >
                 <VStack
                     align='center'
@@ -33,14 +34,11 @@ const BaseCard = ({ heading, description, link, backgroundColor, headingColor, d
                         as='h3'
                         textStyle='h3'
                         color={headingColor}
-                        border='1px solid green'
                     >
                         {heading}
                     </Heading>
                     <Text
-                        textStyle=''
                         color={descriptionColor}
-                        border='1px solid green'
                         textAlign='center'
                     >
                         {description}

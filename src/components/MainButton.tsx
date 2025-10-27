@@ -2,12 +2,12 @@ import { Button, Link } from '@chakra-ui/react'
 
 interface MainButtonProps {
     text?: string
-    link?: string
+    href?: string
     onClick?: () => void
     isExternal?: boolean
 }
 
-const MainButton = ({ text, link, onClick, isExternal }: MainButtonProps) => {
+const MainButton = ({ text, href, onClick, isExternal }: MainButtonProps) => {
     const handleClick = () => {
         onClick?.()
     }
@@ -22,16 +22,15 @@ const MainButton = ({ text, link, onClick, isExternal }: MainButtonProps) => {
             py={4}
             borderRadius='md'
             _hover={{ bg: 'interactive.primaryHover' }}
-            // alignSelf={{ base: 'left', md: 'center' }}
             w={{ base: 'auto', md: 'auto' }}
         >
             {text}
         </Button>
     )
 
-    if (link) {
+    if (href) {
         return (
-            <Link href={link} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener noreferrer' : undefined}>
+            <Link href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener noreferrer' : undefined}>
                 {buttonEl}
             </Link>
         )

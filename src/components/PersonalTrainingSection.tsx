@@ -9,11 +9,11 @@ interface PersonalTrainingSectionProps {
     subheading: string
     features: FeatureCardProps[]
     ctaText: string
-    ctaLink?: string
+    ctaHref?: string
     onCtaClick?: () => void
 }
 
-export default function PersonalTrainingSection({ heading, highlight, subheading, features, ctaText, ctaLink, onCtaClick }: PersonalTrainingSectionProps) {
+export default function PersonalTrainingSection({ heading, highlight, subheading, features, ctaText, ctaHref, onCtaClick }: PersonalTrainingSectionProps) {
     return (
         <Box bg='surface.page' color='text.onPage' px={[4, 6, 8]} py={[12, 16, 20]}>
             <VStack gap={6} maxW='container.xl' mx='auto' textAlign='center'>
@@ -31,7 +31,7 @@ export default function PersonalTrainingSection({ heading, highlight, subheading
                 <Text textStyle='sm' color='text.onPage'>
                     Contattami per verificare che ci siano i requisiti minimi per organizzare la tua prima sessione di personal training assieme a me.
                 </Text>
-                <MainButton text={ctaText} link={ctaLink} onClick={onCtaClick} />
+                <MainButton text={ctaText} href={ctaHref} onClick={onCtaClick} />
             </VStack>
         </Box>
     )

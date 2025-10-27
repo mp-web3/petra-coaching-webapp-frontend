@@ -5,12 +5,12 @@ interface TwoColumnIntroProps {
     heading: string | React.ReactNode
     text: string
     buttonText: string
-    buttonLink: string
+    buttonHref: string
     reverse?: boolean
     variant?: 'light' | 'dark'
 }
 
-function TwoColumnIntro({ heading, text, buttonText, buttonLink, reverse = false, variant = 'light' }: TwoColumnIntroProps) {
+function TwoColumnIntro({ heading, text, buttonText, buttonHref, reverse = false, variant = 'light' }: TwoColumnIntroProps) {
     const isDark = variant === 'dark'
     const bg = isDark ? 'surface.dark' : 'surface.page'
     const textColor = isDark ? 'text.onDark' : 'text.onPage'
@@ -57,7 +57,7 @@ function TwoColumnIntro({ heading, text, buttonText, buttonLink, reverse = false
                     >
                         {text}
                     </Text>
-                    <MainButton text={buttonText} link={buttonLink} />
+                    <MainButton text={buttonText} href={buttonHref} />
                 </VStack>
             </SimpleGrid>
         </Container>
